@@ -53,7 +53,7 @@
                 <select v-model="user.scope" class="form-control" v-validate="'required'" :class="{ 'is-invalid': submitted && errors.has('scope') }">
                     <option value='L'>Lose weight</option>
                     <option value='M'>Muscle increase</option>
-                    <option value='s'>Stay in shape</option>
+                    <option value='S'>Stay in shape</option>
                 </select>
                 <div v-if="submitted && errors.has('scope')" class="invalid-feedback">{{ errors.first('scope') }}</div>
             </div>

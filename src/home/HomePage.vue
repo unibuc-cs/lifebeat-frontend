@@ -1,13 +1,14 @@
 <template>
     <div>
-        <h1>Hi {{account.user.firstName}}!</h1>
+        <h1>Hi {{account.user.first_name}}!</h1>
         <p>You're logged in with Vue + Vuex & JWT!!</p>
         <h3>Users from secure api end point:</h3>
         <em v-if="users.loading">Loading users...</em>
         <span v-if="users.error" class="text-danger">ERROR: {{users.error}}</span>
         <ul v-if="users.items">
             <li v-for="user in users.items" :key="user.id">
-                {{user.email + ' ' + user.firstName + ' ' + user.lastName + ' ' + user.gender + ' ' + user.scope + ' ' + user.height + 'cm' + ' ' + user.weight + 'kg' }}
+                {{user.email + ' ' + user.first_name + ' ' + user.last_name }} 
+                {{ user.gender + ' ' + user.purpose + ' ' + user.height + 'cm' + ' ' + user.weight + 'kg' + user.age }}       
                 <span v-if="user.deleting"><em> - Deleting...</em></span>
                 <span v-else-if="user.deleteError" class="text-danger"> - ERROR: {{user.deleteError}}</span>
                 <span v-else> - <a @click="deleteUser(user.id)" class="text-danger">Delete</a></span>

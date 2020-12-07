@@ -13,14 +13,14 @@
                 <div v-if="submitted && errors.has('password')" class="invalid-feedback">{{ errors.first('password') }}</div>
             </div>
             <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" v-model="user.firstName" v-validate="'required'" name="firstName" class="form-control" :class="{ 'is-invalid': submitted && errors.has('firstName') }" />
-                <div v-if="submitted && errors.has('firstName')" class="invalid-feedback">{{ errors.first('firstName') }}</div>
+                <label for="first_name">First Name</label>
+                <input type="text" v-model="user.first_name" v-validate="'required'" name="first_name" class="form-control" :class="{ 'is-invalid': submitted && errors.has('first_name') }" />
+                <div v-if="submitted && errors.has('first_name')" class="invalid-feedback">{{ errors.first('first_name') }}</div>
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" v-model="user.lastName" v-validate="'required'" name="lastName" class="form-control" :class="{ 'is-invalid': submitted && errors.has('lastName') }" />
-                <div v-if="submitted && errors.has('lastName')" class="invalid-feedback">{{ errors.first('lastName') }}</div>
+                <label for="last_name">Last Name</label>
+                <input type="text" v-model="user.last_name" v-validate="'required'" name="last_name" class="form-control" :class="{ 'is-invalid': submitted && errors.has('last_name') }" />
+                <div v-if="submitted && errors.has('last_name')" class="invalid-feedback">{{ errors.first('last_name') }}</div>
             </div>
             <div class="form-group">
                 <label for="height">Height (cm)</label>
@@ -32,30 +32,35 @@
                 <input type="text" v-model="user.weight" v-validate="'required'" name="weight" class="form-control" :class="{ 'is-invalid': submitted && errors.has('weight') }" />
                 <div v-if="submitted && errors.has('weight')" class="invalid-feedback">{{ errors.first('weight') }}</div>
             </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" v-model="user.age" v-validate="'required'" name="age" class="form-control" :class="{ 'is-invalid': submitted && errors.has('age') }" />
+                <div v-if="submitted && errors.has('age')" class="invalid-feedback">{{ errors.first('age') }}</div>
+            </div>
 
             <div class="form-group">
                 <label htmlFor="gender">Gender:</label><br>
 
-                <input type="radio" v-model="user.gender" v-validate="'required'" name="gender" value="male" :class="{ 'is-invalid': submitted && errors.has('gender') }" />
+                <input type="radio" v-model="user.gender" v-validate="'required'" name="gender" value="M" :class="{ 'is-invalid': submitted && errors.has('gender') }" />
                 <label for="male">Male</label><br>
                 
-                <input type="radio" v-model="user.gender" v-validate="'required'" name="gender" value="female" :class="{ 'is-invalid': submitted && errors.has('gender') }" />
+                <input type="radio" v-model="user.gender" v-validate="'required'" name="gender" value="F" :class="{ 'is-invalid': submitted && errors.has('gender') }" />
                 <label for="male">Female</label><br>
                 
-                <input type="radio" v-model="user.gender" v-validate="'required'" name="gender" value="other" :class="{ 'is-invalid': submitted && errors.has('gender') }" />
+                <input type="radio" v-model="user.gender" v-validate="'required'" name="gender" value="O" :class="{ 'is-invalid': submitted && errors.has('gender') }" />
                 <label for="male">Other</label><br>
 
                 <div v-if="submitted && errors.has('gender')" class="invalid-feedback">{{ errors.first('gender') }}</div>
             </div>
 
             <div class="form-group">
-                <label for="scope">Why do you want to use the app?</label>
-                <select v-model="user.scope" class="form-control" v-validate="'required'" :class="{ 'is-invalid': submitted && errors.has('scope') }">
+                <label for="purpose">Why do you want to use the app?</label>
+                <select v-model="user.purpose" class="form-control" v-validate="'required'" :class="{ 'is-invalid': submitted && errors.has('purpose') }">
                     <option value='L'>Lose weight</option>
                     <option value='M'>Muscle increase</option>
                     <option value='S'>Stay in shape</option>
                 </select>
-                <div v-if="submitted && errors.has('scope')" class="invalid-feedback">{{ errors.first('scope') }}</div>
+                <div v-if="submitted && errors.has('purpose')" class="invalid-feedback">{{ errors.first('purpose') }}</div>
             </div>
 
             <div class="form-group">
@@ -74,8 +79,8 @@ export default {
     data () {
         return {
             user: {
-                firstName: '',
-                lastName: '',
+                first_name: '',
+                last_name: '',
                 email: '',
                 password: ''
             },

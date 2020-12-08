@@ -13,18 +13,13 @@ export const userService = {
 
 function login(email, password) {
     const requestOptions = {
+        credentials: 'include',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
     };
 
-    return fetch(`localhost:8888/users/authenticate`, {
-        credentials: 'include',
-        method: 'POST',
-        headers: {'Content-Type': 'text/plain'},
-        body: JSON.stringify({email, password})
-    })
-    // return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // login successful if there's a jwt token in the response
@@ -43,7 +38,6 @@ function logout() {
 }
 
 function register(user) {
-
     const requestOptions = {
         credentials: 'include',
         method: 'POST',

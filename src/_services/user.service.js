@@ -54,7 +54,7 @@ function getAll() {
         method: 'GET',
         headers: authHeader()
     };
-
+    console.log(fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse))
     return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 

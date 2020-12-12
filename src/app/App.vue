@@ -1,10 +1,10 @@
 <template>
     <div class="jumbotron">
-        <div class="container">
+        <div class="main">
             <div class="row">
-                <div class="col-sm-6 offset-sm-3">
-                    <div v-if="alert.message" :class="`alert ${alert.type}`">{{alert.message}}</div>
-                    <router-view></router-view>
+                <div class="col-sm-12">
+                        <div v-if="alert.message" :class="`alert ${alert.type}`">{{alert.message}}</div>
+                        <router-view></router-view>
                 </div>
             </div>
         </div>
@@ -34,3 +34,9 @@ export default {
     } 
 };
 </script>
+
+<style  scoped>
+#main{
+    height: 90%;
+}
+</style>

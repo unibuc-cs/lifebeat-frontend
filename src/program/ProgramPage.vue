@@ -1,9 +1,13 @@
 <template>
     <div>
         <navbar />
-        <h1>Programs </h1>
+        <h1>Program Page</h1>
+        
+        
     </div>
+
 </template>
+
 <script>
     import { mapState, mapActions } from 'vuex';
     import navbar from '../home/navbar.vue';
@@ -18,6 +22,11 @@
     };
 </script>
 
-<style scoped>
-
+<style>
+.admin {
+        background: #51313126;
+        border: 3px solid Teal;
+        width: fit-content;
+        margin: 2px;
+    }
 </style>

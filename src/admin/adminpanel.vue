@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="border border-dark bg-light">
             <h3>Users from secure api end point:</h3>
             <em v-if="users.loading">Loading users...</em>
             <span v-if="users.error" class="text-danger">ERROR: {{users.error}}</span>
@@ -41,6 +41,11 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+.admin {
+    background: #51313126;
+    border: 3px solid Teal;
+    width: fit-content;
+    margin: 2px;
+}
 </style>

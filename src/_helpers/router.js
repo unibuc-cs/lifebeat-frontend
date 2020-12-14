@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import HomePage from '../home/HomePage'
 import LoginPage from '../login/LoginPage'
 import RegisterPage from '../register/RegisterPage'
+import ProgramPage  from "../program/ProgramPage";
 import ProgramsPage from '../programs/ProgramsPage'
 import ProfilePage from '../profile/ProfilePage'
 import LeaderboardPage from '../leaderboard/LeaderboardPage'
@@ -16,6 +17,7 @@ export const router = new Router({
     { path: '/', component: HomePage },
     { path: '/login', component: LoginPage },
     { path: '/register', component: RegisterPage },
+    { path: '/program', component: ProgramPage},
     { path: '/programs', component: ProgramsPage },
     { path: '/profile', component: ProfilePage },
     { path: '/leaderboard', component: LeaderboardPage },

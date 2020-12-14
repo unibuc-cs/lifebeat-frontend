@@ -5,7 +5,9 @@
         
         <div class="container-fluid w-100 text-dark wrapper-d">
             <div class="row px-5">
-                <div :class = "(account.user.admin)?'col-md-8':'col-md-12'" class="programs">
+                <div class="col-md-12 programs">
+                    <em v-if="programs.loading">Loading programs...</em>
+                    <img v-show="programs.loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==">
                     <div class="float-left w-100 mx-auto"  v-for="program in programs.items" :key="program.program_id"> 
                         <router-link class="nav-link" to="/program">
                             <div class="program text-dark text-decoration-none">
@@ -16,11 +18,11 @@
                         </router-link>
                     </div>
                 </div>
-                <div class="col-md-4 float-righ">
+                <!-- <div class="col-md-4 float-righ">
                     <div v-if="account.user.admin" class="float-right">
                         <adminpanel/>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         
@@ -76,5 +78,10 @@ export default {
 
     .wrapper-d {
         z-index: 2;
+    }
+
+    .program-img{
+        max-width: 300px;
+        max-height: 300px;;
     }
 </style>

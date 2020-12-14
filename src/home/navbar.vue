@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light nav-lifebeat">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light nav-lifebeat text-dark">
     <a class="navbar-brand" href="/">LifeBeat</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -21,6 +21,9 @@
             <li class="nav-item">
                 <router-link class="nav-link" to="/profile">My Profile</router-link>
             </li>
+            <li class="nav-item" v-if="account.user.admin">
+                <router-link class="nav-link" to="/admin-panel">Admin Panel</router-link>
+            </li>
         </ul>
         <ul class="navbar-nav mr-5">
             <li class="nav-item">
@@ -41,9 +44,18 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+import navbar from '../home/navbar.vue';
+
 export default {
-    name: 'NavBar'
-}
+    name: 'NavBar',
+    components: { navbar },
+    computed: {
+            ...mapState({
+                account: state => state.account
+            })
+        },
+};
 </script>
 
 <style>

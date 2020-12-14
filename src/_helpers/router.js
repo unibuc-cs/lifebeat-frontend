@@ -9,6 +9,7 @@ import ProgramsPage from '../programs/ProgramsPage'
 import ProfilePage from '../profile/ProfilePage'
 import LeaderboardPage from '../leaderboard/LeaderboardPage'
 import Calorie_trackerPage from '../calorie_tracker/Calorie_trackerPage'
+import AdminPage from '../admin/AdminPage'
 Vue.use(Router);
 
 export const router = new Router({
@@ -22,6 +23,7 @@ export const router = new Router({
     { path: '/profile', component: ProfilePage },
     { path: '/leaderboard', component: LeaderboardPage },
     { path: '/calorie_tracker', component: Calorie_trackerPage },
+    { path: '/admin-panel', component: AdminPage},
 
     // otherwise redirect to home
     { path: '*', redirect: '/' }

@@ -7,14 +7,14 @@ export const programsService = {
 
 function getAll() {
     
-    return Promise.resolve(programs)
+    // return Promise.resolve(programs)
 
-    // const requestOptions = {
-    //     method: 'GET',
-    //     headers: authHeader()
-    // };
-    // console.log(fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse))
-    // return fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse);
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    console.log(fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse))
+    return fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse);
 }
 
 
@@ -41,7 +41,7 @@ const programs = [
         program_id: 1,
         name: "Program 1",
         image: "https://i.ibb.co/3YfKGK3/image.png",
-        user: {
+        createdByUser: {
             id: 18,
             first_name: "User1",
             last_name: "User1L",
@@ -60,7 +60,7 @@ const programs = [
         program_id: 2,
         name: "Program 2",
         image: "https://i.ibb.co/SrCfTwt/image.png",
-        user: {
+        createdByUser: {
             id: 18,
             first_name: "User1",
             last_name: "User1L",
@@ -79,7 +79,7 @@ const programs = [
         program_id: 3,
         name: "Program 3",
         image: "https://i.ibb.co/3YfKGK3/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -98,7 +98,7 @@ const programs = [
         program_id: 4,
         name: "Program 4",
         image: "https://i.ibb.co/6nSTWKP/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -117,7 +117,7 @@ const programs = [
         program_id: 5,
         name: "Program 5",
         image: "https://i.ibb.co/jrsWT8m/image.png",
-        user: {
+        createdByUser: {
             id: 11,
             first_name: "Gica",
             last_name: "Petru",
@@ -136,7 +136,7 @@ const programs = [
         program_id: 6,
         name: "Program 6",
         image: "https://i.ibb.co/3YfKGK3/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -155,7 +155,7 @@ const programs = [
         program_id: 7,
         name: "Program 7",
         image: "https://i.ibb.co/SrCfTwt/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -174,7 +174,7 @@ const programs = [
         program_id: 8,
         name: "Program 8",
         image: "https://i.ibb.co/6nSTWKP/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -193,7 +193,7 @@ const programs = [
         program_id: 9,
         name: "Program 9",
         image: "https://i.ibb.co/3YfKGK3/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -212,7 +212,7 @@ const programs = [
         program_id: 10,
         name: "Program 10",
         image: "https://i.ibb.co/jrsWT8m/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -231,7 +231,7 @@ const programs = [
         program_id: 11,
         name: "Program 11",
         image: "https://i.ibb.co/jrsWT8m/image.png",
-        user: {
+        createdByUser: {
             id: 22,
             first_name: "Atlet",
             last_name: "Talentat",
@@ -250,7 +250,7 @@ const programs = [
         program_id: 12,
         name: "Program 12",
         image: "https://i.ibb.co/SrCfTwt/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -269,7 +269,7 @@ const programs = [
         program_id: 13,
         name: "Program 13",
         image: "https://i.ibb.co/3YfKGK3/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",
@@ -288,7 +288,7 @@ const programs = [
         program_id: 14,
         name: "Program 14",
         image: "https://i.ibb.co/jrsWT8m/image.png",
-        user: {
+        createdByUser: {
             id: 10,
             first_name: "Ion",
             last_name: "Barbu",

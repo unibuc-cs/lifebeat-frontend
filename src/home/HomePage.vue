@@ -7,11 +7,11 @@
             <div class="row px-5">
                 <div :class = "(account.user.admin)?'col-md-8':'col-md-12'" class="programs">
                     <div class="float-left w-100 mx-auto"  v-for="program in programs.items" :key="program.program_id"> 
-                        <router-link class="nav-link" to="/">
+                        <router-link class="nav-link" to="/program">
                             <div class="program text-dark text-decoration-none">
                                 <img v-bind:src=program.image alt="Picture" class="img-thumbnail program-img">
                                 <div>{{program.name}}</div>
-                                <div>{{program.user.first_name + ' ' + program.user.last_name}}</div>
+                                <div>{{program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name']}}</div>
                             </div>
                         </router-link>
                     </div>

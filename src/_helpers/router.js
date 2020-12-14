@@ -4,7 +4,7 @@ import Router from 'vue-router';
 import HomePage from '../home/HomePage'
 import LoginPage from '../login/LoginPage'
 import RegisterPage from '../register/RegisterPage'
-import { ProgramPage } from "../program/ProgramPage";
+import ProgramPage  from "../program/ProgramPage";
 import ProgramsPage from '../programs/ProgramsPage'
 import ProfilePage from '../profile/ProfilePage'
 import LeaderboardPage from '../leaderboard/LeaderboardPage'

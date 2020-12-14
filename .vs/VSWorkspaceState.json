@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\calorie_tracker",
+    "\\src\\LeaderBoard",
+    "\\src\\login",
+    "\\src\\profile",
+    "\\src\\programs",
+    "\\src\\register",
+    "\\src\\_helpers",
+    "\\src\\_services"
+  ],
+  "SelectedNode": "\\src\\calorie_tracker\\Calorie_trackerPage.vue",
+  "PreviewInSolutionExplorer": false
+}

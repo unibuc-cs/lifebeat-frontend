@@ -1,8 +1,42 @@
 <template>
     <div>
         <navbar />
-        <h1>Program Page</h1>
-        
+        <!-- <h1>Program Page {{ id }}</h1> -->
+        <div class="mt-3">
+            <div class="row">
+                <div class="col-md-2">
+                    <img v-bind:src=program.image alt="Picture" class="img-thumbnail prog-img">
+                </div>
+                <div class="col-md-9 card-body d-flex flex-column">
+                    <div class="col">
+                        <h1 class="row display-3">{{ program.name }}</h1>
+                        <p class="h2 text-info">{{ program.description }}</p>
+                        <p class="h6 text-secondary">{{ program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name'] }}</p>
+                    </div>
+                    <div class="row mt-auto ml-auto">
+                        <button type="button" class="btn btn-success btn-lg">Start Program</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Duration/Reps</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(ex, index) in program.exercises" :key="ex.exercise_id">
+                    <th scope="row">{{ index + 1}}</th>
+                    <td>{{ ex.name }}</td>
+                    <td>{{ ex.duration }}</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
         
     </div>
 
@@ -16,17 +50,25 @@
         components: { navbar },
         computed: {
             ...mapState({
-                account: state => state.account
+                account: state => state.account,
+                program: state => state.details.all
             })
         },
+        props: ['id'],
+        created () {
+            this.getProgramDetails(this.id);
+        },
+        methods: {
+        ...mapActions('details', {
+            getProgramDetails: 'getAll'
+        })
+    }
     };
 </script>
 
-<style>
-.admin {
-        background: #51313126;
-        border: 3px solid Teal;
-        width: fit-content;
-        margin: 2px;
+<style scoped>
+    .prog-img{
+        max-width: 300px;
+        max-height: 300px;;
     }
 </style>

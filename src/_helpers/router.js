@@ -18,7 +18,7 @@ export const router = new Router({
     { path: '/', component: HomePage },
     { path: '/login', component: LoginPage },
     { path: '/register', component: RegisterPage },
-    { path: '/program', component: ProgramPage},
+    { path: '/program/:id', component: ProgramPage, props: true},
     { path: '/programs', component: ProgramsPage },
     { path: '/profile', component: ProfilePage },
     { path: '/leaderboard', component: LeaderboardPage },

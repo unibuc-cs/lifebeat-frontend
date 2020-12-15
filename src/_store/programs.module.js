@@ -11,7 +11,7 @@ const actions = {
 
         programsService.getAll()
             .then(
-                users => commit('getAllSuccess', users),
+                progs => commit('getAllSuccess', progs),
                 error => commit('getAllFailure', error)
             );
     }
@@ -21,8 +21,8 @@ const mutations = {
     getAllRequest(state) {
         state.all = { loading: true };
     },
-    getAllSuccess(state, users) {
-        state.all = { items: users };
+    getAllSuccess(state, progs) {
+        state.all = { items: progs };
     },
     getAllFailure(state, error) {
         state.all = { error };

@@ -18,11 +18,6 @@
                         </router-link>
                     </div>
                 </div>
-                <!-- <div class="col-md-4 float-righ">
-                    <div v-if="account.user.admin" class="float-right">
-                        <adminpanel/>
-                    </div>
-                </div> -->
             </div>
         </div>
         
@@ -32,10 +27,9 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import navbar from './navbar.vue';
-import adminpanel from '../admin/adminpanel.vue'
 
 export default {
-   components: { navbar, adminpanel },
+   components: { navbar },
     computed: {
         ...mapState({
             account: state => state.account,

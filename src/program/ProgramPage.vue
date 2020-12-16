@@ -3,6 +3,14 @@
         <navbar />
         <!-- <h1>Program Page {{ id }}</h1> -->
         <div class="mt-3">
+
+
+<!-- <router-link class="nav-link" to="/exercise"> -->
+<router-link class="nav-link" :to="{name: 'exercises', params: { exercises: program.exercises } }">
+                            <button type="button" class="btn btn-success btn-lg start-btn">Start Program</button>
+</router-link>
+
+
             <div class="row">
                 <div class="col-md-2">
                     <img v-bind:src=program.image alt="Picture" class="img-thumbnail prog-img">
@@ -14,7 +22,9 @@
                         <p class="h6 text-secondary">{{ program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name'] }}</p>
                     </div>
                     <div class="row mt-auto ml-auto">
-                        <button type="button" class="btn btn-success btn-lg">Start Program</button>
+                        <router-link class="nav-link" to="/exercise">
+                            <button type="button" class="btn btn-success btn-lg start-btn">Start Program</button>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -70,5 +80,9 @@
     .prog-img{
         max-width: 300px;
         max-height: 300px;;
+    }
+
+    .start-btn {
+        z-index: 3;
     }
 </style>

@@ -10,6 +10,7 @@ import ProfilePage from '../profile/ProfilePage'
 import LeaderboardPage from '../leaderboard/LeaderboardPage'
 import Calorie_trackerPage from '../calorie_tracker/Calorie_trackerPage'
 import AdminPage from '../admin/AdminPage'
+import ExercisesPage from '../execises/ExercisesPage'
 Vue.use(Router);
 
 export const router = new Router({
@@ -24,6 +25,7 @@ export const router = new Router({
     { path: '/leaderboard', component: LeaderboardPage },
     { path: '/calorie_tracker', component: Calorie_trackerPage },
     { path: '/admin-panel', component: AdminPage},
+    { name: 'exercises', path: '/exercise', component: ExercisesPage, props: true},
 
     // otherwise redirect to home
     { path: '*', redirect: '/' }

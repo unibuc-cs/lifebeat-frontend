@@ -26,9 +26,14 @@
             </li>
         </ul>
         <ul class="navbar-nav mr-5">
+            <span class="navbar-text">
+                <i class="fas fa-dumbbell"></i>
+                {{'Streak: ' + account.user.streak_count + ' ' + account.user.first_name + ' ' + account.user.last_name}}
+            </span>
             <li class="nav-item">
                 <router-link class="nav-link" to="/login">Logout</router-link>
             </li>
+            
             <!-- <li class="nav-item dropdown">>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 User Profile

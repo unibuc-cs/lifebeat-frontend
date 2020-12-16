@@ -63,7 +63,7 @@ const program = {
             exercise_id: 1,
             name: 'Flotari',
             description: 'Se fac multe flotari ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
-            video: 'https://giphy.com/gifs/8fit-tsTsgT7v6wy5hYXI9U',
+            video: 'https://media.giphy.com/media/tsTsgT7v6wy5hYXI9U/giphy.gif',
             duration: 30,
             points: 10
         },
@@ -71,7 +71,7 @@ const program = {
             exercise_id: 2,
             name: 'Front Lunge',
             description: 'Se fac multe exerciitii asdasadadada dsada0pk dsa ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
-            video: 'https://giphy.com/gifs/SwgkfECuO4XylhLNuN',
+            video: 'https://media.giphy.com/media/SwgkfECuO4XylhLNuN/giphy.gif',
             duration: 25,
             points: 5
         },
@@ -79,7 +79,7 @@ const program = {
             exercise_id: 3,
             name: 'Abdomene',
             description: 'Se fac multe exerciitii asdasadadada dsada0pk dsa ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
-            video: 'https://giphy.com/gifs/SwgkfECuO4XylhLNuN',
+            video: 'https://media.giphy.com/media/SwgkfECuO4XylhLNuN/giphy.gif',
             duration: 54,
             points: 5
         },
@@ -87,7 +87,7 @@ const program = {
             exercise_id: 4,
             name: 'Front Lunge',
             description: 'Se fac multe exerciitii asdasadadada dsada0pk dsa ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
-            video: 'https://giphy.com/gifs/SwgkfECuO4XylhLNuN',
+            video: 'https://media.giphy.com/media/a3rQFFgqKDXWw/giphy.gif',
             duration: 21,
             points: 5
         },
@@ -95,7 +95,7 @@ const program = {
             exercise_id: 5,
             name: 'Front Lunge',
             description: 'Se fac multe exerciitii asdasadadada dsada0pk dsa ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
-            video: 'https://giphy.com/gifs/SwgkfECuO4XylhLNuN',
+            video: 'https://media.giphy.com/media/tsTsgT7v6wy5hYXI9U/giphy.gif',
             duration: 25,
             points: 5
         },
@@ -103,7 +103,7 @@ const program = {
             exercise_id: 6,
             name: 'Front Lunge',
             description: 'Se fac multe exerciitii asdasadadada dsada0pk dsa ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
-            video: 'https://giphy.com/gifs/SwgkfECuO4XylhLNuN',
+            video: 'https://media.giphy.com/media/l3q2Q3sUEkEyDvfPO/giphy.gif',
             duration: 25,
             points: 5
         },
@@ -111,7 +111,7 @@ const program = {
             exercise_id: 7,
             name: 'Front Lunge',
             description: 'Se fac multe exerciitii asdasadadada dsada0pk dsa ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
-            video: 'https://giphy.com/gifs/SwgkfECuO4XylhLNuN',
+            video: 'https://media.giphy.com/media/l3q2Q3sUEkEyDvfPO/giphy.gif',
             duration: 25,
             points: 5
         }

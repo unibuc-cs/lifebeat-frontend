@@ -64,7 +64,7 @@ const program = {
             name: 'Flotari',
             description: 'Se fac multe flotari ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
             video: 'https://media.giphy.com/media/tsTsgT7v6wy5hYXI9U/giphy.gif',
-            duration: 30,
+            duration: 7,
             points: 10
         },
         {
@@ -72,7 +72,7 @@ const program = {
             name: 'Front Lunge',
             description: 'Se fac multe exerciitii asdasadadada dsada0pk dsa ca sunt bune pentru brate si vrei sa ai muschi la brate si alte chestii scrise aici ca e text lung',
             video: 'https://media.giphy.com/media/SwgkfECuO4XylhLNuN/giphy.gif',
-            duration: 25,
+            duration: 8,
             points: 5
         },
         {

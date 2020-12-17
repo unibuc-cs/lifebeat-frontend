@@ -25,7 +25,7 @@ const mutations = {
         state.all = { items: progs };
     },
     getAllFailure(state, error) {
-        state.all = { error };
+        state.all = { error: 'error' };
     }
 };
 

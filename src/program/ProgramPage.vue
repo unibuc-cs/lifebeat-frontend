@@ -1,10 +1,9 @@
 <template>
     <div>
         <navbar />
-        <!-- <h1>Program Page {{ id }}</h1> -->
         <div class="mt-3">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <img v-bind:src=program.image alt="Picture" class="img-thumbnail prog-img">
                 </div>
                 <div class="col-md-9 card-body d-flex flex-column">
@@ -70,8 +69,8 @@
 
 <style scoped>
     .prog-img{
-        max-width: 300px;
-        max-height: 300px;;
+        max-width: 20rem;
+        max-height: 20rem;;
     }
 
     .start-btn {

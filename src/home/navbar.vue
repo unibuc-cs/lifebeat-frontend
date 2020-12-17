@@ -27,7 +27,7 @@
         </ul>
         <ul class="navbar-nav mr-5">
             <span class="navbar-text">
-                <i class="fas fa-dumbbell"></i>
+                <i class="fas fa-fire"></i>
                 {{'Streak: ' + account.user.streak_count + ' ' + account.user.first_name + ' ' + account.user.last_name}}
             </span>
             <li class="nav-item">

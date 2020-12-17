@@ -27,8 +27,10 @@
         </ul>
         <ul class="navbar-nav mr-5">
             <span class="navbar-text">
-                <i class="fas fa-fire"></i>
-                {{'Streak: ' + account.user.streak_count + ' ' + account.user.first_name + ' ' + account.user.last_name}}
+                <icon class="icon-dumbbell" icon="fire-alt" />
+                {{account.user.streak_count }}
+                <icon class="icon-dumbbell mr-3" icon="fire-alt" />
+                {{ account.user.first_name + ' ' + account.user.last_name}}
             </span>
             <li class="nav-item">
                 <router-link class="nav-link" to="/login">Logout</router-link>
@@ -71,5 +73,10 @@ export default {
         width: 100%;
         height: 65px;
         z-index: 1;
+    }
+
+    .icon-dumbbell{
+        color: red;
+        font-size: 1.6rem;
     }
 </style>

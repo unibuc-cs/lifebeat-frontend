@@ -17,10 +17,13 @@
                         <p>
                             {{ current.description }}
                         </p>
-                        <h4>
-                           {{ current.duration }} sec/reps
+                        <h4 v-if="current.duration">
+                           {{ current.duration }} seconds
                         </h4>
-                        <div class="timer numberCircle">
+                        <h4 v-else>
+                            {{current.reps}} reps
+                        </h4>
+                        <div class="timer numberCircle" v-if="current.duration">
                             {{ timer }}
                         </div>
                     </div>
@@ -33,11 +36,12 @@
                         </button> -->
                         <div class="float-right mr-5 pr-5">
                             
+                            <!-- <button class="next btn btn-info btn-lg" @click="next" v-if="exercises.length > 1 && exercises.indexOf(current) < exercises.length - 1"> -->
                             <button class="next btn btn-info btn-lg" @click="next" v-if="exercises.length > 1 && exercises.indexOf(current) < exercises.length - 1" :disabled="timer != 0">
                                 Next
                             </button>
-                            <router-link class="nav-link" to="/" v-else :disabled="timer != 0">
-                                <button class="next btn btn-info btn-lg" @click="finishedProgram(account.user.id)">
+                            <router-link class="nav-link" to="/" v-else>
+                                <button class="next btn btn-info btn-lg" @click="finishedProgram(account.user.id)" :disabled="timer != 0">
                                     Finish
                                 </button>
                             </router-link>

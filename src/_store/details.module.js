@@ -1,26 +1,44 @@
 import { detailsService } from '../_services';
 
 const state = {
-    all: {}
+    prog: {},
+    ex: {}
 };
 
 
 const actions = {
     getAll({ commit }, id) {
-        detailsService.getAll(id)
+        console.log('actions')
+        // console.log(detailsService.getAll(id))
+        detailsService.getProgram(id)
             .then(
-                prog => commit('getAllSuccess', prog),
-                error => commit('getAllFailure', error)
+                prog => commit('getProgSuccess', prog),
+                error => commit('getProgFailure', error)
             );
+        
+        detailsService.getExercises(id)
+        .then(
+            prog => commit('getExSuccess', prog),
+            error => commit('getExFailure', error)
+        );
+        
     }
 }
 
 const mutations = {
-    getAllSuccess(state, prog) {
-        state.all =  prog ;
+    getProgSuccess(state, prog) {
+        state.prog = prog
     },
-    getAllFailure(state, error) {
-        state.all = { error };
+    getProgFailure(state, error) {
+        console.log('error')
+        state.prog = { error };
+    },
+    getExSuccess(state, ex) {
+        state.ex = ex
+    },
+    getExFailure(state, error) {
+        console.log('error')
+        state.ex = { error };
     }
 };
 

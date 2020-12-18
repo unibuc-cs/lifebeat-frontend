@@ -2,24 +2,46 @@ import config from 'config';
 import { authHeader } from '../_helpers';
 
 export const detailsService = {
-    getAll,
+    getProgram,
+    getExercises,
 };
 
-function getAll(id) {
-    console.log(Promise.resolve(JSON.parse(JSON.stringify(program))))
-    return Promise.resolve(JSON.parse(JSON.stringify(program)))
+function getProgram(id) {
+    // console.log(Promise.resolve(JSON.parse(JSON.stringify(program))))
+    // return Promise.resolve(JSON.parse(JSON.stringify(program)))
+    // return [
+    //     Promise.resolve(JSON.parse(JSON.stringify(program))), 
+    //     fetch(`${config.apiUrl}/programs/exercises/${id}`, requestOptions).then(handleResponse),
+    //     fetch(`${config.apiUrl}/programs/${id}`, requestOptions).then(handleResponse)
+    // ]
 
-    // const requestOptions = {
-    //     method: 'GET',
-    //     headers: authHeader()
-    // };
-    // console.log(fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse))
-    // return fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse);
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/programs/${id}`, requestOptions).then(handleResponse);
+
+    // console.log(fetch(`${config.apiUrl}/programs/exercises/${id}`, requestOptions).then(handleResponse))
+    // console.log(fetch(`${config.apiUrl}/programs/${id}`, requestOptions).then(handleResponse))
+}
+
+function getExercises(id){
+    // console.log(Promise.resolve(JSON.parse(JSON.stringify(exerc))))
+    // return Promise.resolve(JSON.parse(JSON.stringify(exerc)))
+
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/programs/exercises/${id}`, requestOptions).then(handleResponse);
 }
 
 
 function handleResponse(response) {
     return response.text().then(text => {
+        console.log('func');
+        console.log(text);
+        return JSON.parse(text);
         const data = text && JSON.parse(text);
         if (!response.ok) {
             if (response.status === 401) {
@@ -57,8 +79,10 @@ const program = {
         admin: 0,
         token: null
         }
-    ],
-    exercises:[
+    ]
+}
+
+const exerc = [
         {
             exercise_id: 1,
             name: 'Flotari',
@@ -116,4 +140,3 @@ const program = {
             points: 5
         }
     ]
-}

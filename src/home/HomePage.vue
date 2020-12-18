@@ -1,8 +1,12 @@
 <template>
     <div>
         <navbar/>
-        <h1>Hi {{account.user.first_name}}!</h1>
-        
+        <div class="row mt-3 ml-2">
+            <h1 class="">Hi {{account.user.first_name}}!</h1>
+            <form class="float-right w-75 ml-5">
+                <input class="form-control form-control-lg" type="text" v-model="search" placeholder="Search program title.." aria-label="Search">
+            </form>
+        </div>
         <div class="container-fluid  text-dark wrapper-d">
             <div class="row">
                 <div class="col-12 programs">
@@ -50,12 +54,18 @@ export default {
             account: state => state.account,
             programs: state => state.programs.all
         }),
+        filteredList() {
+            return this.programs.items.filter(post => {
+                return post.name.toLowerCase().includes(this.search.toLowerCase())
+            })
+        },
         displayedPosts() {
             if(this.pages.length == 0){
                 this.setPages();
             }
-            return this.paginate(this.programs.items);
+            return this.paginate(this.filteredList);
         },
+        
     },
     created () {
         this.getAllPrograms();
@@ -64,7 +74,8 @@ export default {
         return {
             page: 1,
             perPage: 6,
-            pages: []
+            pages: [],
+            search: ''
         }
     },
     methods: {
@@ -78,11 +89,8 @@ export default {
                 }
 
                 let numberOfPages = Math.ceil(this.programs.items.length / this.perPage);
-                console.log('nrnr')
-                console.log(numberOfPages)
                 for (let index = 1; index <= numberOfPages; index++) {
                     this.pages.push(index);
-                    console.log(this.pages)
                 }
         },
         paginate (posts) {

@@ -13,7 +13,7 @@
                         <p class="h6 text-secondary">{{ program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name'] }}</p>
                     </div>
                     <div class="row mt-auto ml-auto">
-                        <router-link class="nav-link" :to="{name: 'exercises', params: { exercises: program.exercises } }">
+                        <router-link class="nav-link" :to="{name: 'exercises', params: { exercises: exercises } }">
                             <button type="button" class="btn btn-success btn-lg start-btn">Start Program</button>
                         </router-link>
                     </div>
@@ -29,10 +29,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(ex, index) in program.exercises" :key="ex.exercise_id">
+                    <tr v-for="(ex, index) in exercises" :key="ex.exercise_id">
                     <th scope="row">{{ index + 1}}</th>
                     <td>{{ ex.name }}</td>
-                    <td>{{ ex.duration }}</td>
+                    <td v-if="ex.duration">{{ ex.duration }}</td>
+                    <td v-else>{{ ex.reps }}</td>
                     </tr>
                 </tbody>
                 </table>
@@ -52,7 +53,8 @@
         computed: {
             ...mapState({
                 account: state => state.account,
-                program: state => state.details.all
+                program: state => state.details.prog,
+                exercises: state => state.details.ex
             })
         },
         props: ['id'],

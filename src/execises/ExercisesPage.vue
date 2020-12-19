@@ -64,7 +64,8 @@
                     <tr v-for="(ex, index) in exercises" :key="ex.exercise_id">
                     <th scope="row" v-bind:class="{'text-danger': ex.exercise_id == current.exercise_id}">{{ index + 1}}</th>
                     <td v-bind:class="{'text-danger': ex.exercise_id == current.exercise_id}">{{ ex.name }}</td>
-                    <td v-bind:class="{'text-danger': ex.exercise_id == current.exercise_id}">{{ ex.duration }}</td>
+                    <td v-bind:class="{'text-danger': ex.exercise_id == current.exercise_id}" v-if="ex.duration">{{ ex.duration }}</td>
+                    <td v-bind:class="{'text-danger': ex.exercise_id == current.exercise_id}" v-else>{{ ex.reps }}</td>
                     </tr>
                 </tbody>
                 </table>
@@ -85,6 +86,7 @@
 </template>
 
 <script>
+    import config from 'config';
     import { mapState, mapActions } from 'vuex';
     import navbar from '../home/navbar.vue';
 
@@ -99,14 +101,51 @@
                 finishedProgram(user_id){
                     console.log(user_id)
 
-                    // const requestOptions = {
-                    //     method: 'POST',
-                    //     credentials: 'include',
-                    //     headers: { 'Content-Type': 'application/json' },
-                    //     body: JSON.stringify({ user_id })
-                    // };
-                    // console.log(fetch(`${config.apiUrl}/program-finished`, requestOptions).then(handleResponse))
-                    // fetch(`${config.apiUrl}/program-finisheds`, requestOptions).then(handleResponse);
+                    var current_date = new Date();
+                    // console.log("current_date:", current_date);
+                    var current_date_iso = current_date.toISOString();
+                    // console.log("current_date_iso:", current_date_iso);
+                    var yesterday = current_date;
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    yesterday.setHours(0,0,0,0);
+                    // console.log("yesterday:", yesterday);
+
+                    var last_date = new Date(this.account.user.last_program_finish_date);
+                    // var last_date = new Date("2020-12-18T11:05:32.000Z");
+
+                    // console.log("last_date:", last_date);
+
+                    var curr_2 = new Date();
+                    curr_2.setHours(0,0,0,0);
+
+                    // console.log("curr_2:", curr_2);
+
+                    var streak_count = this.account.user.streak_count;
+                    if(last_date < curr_2){
+                        if(yesterday < last_date){
+                            streak_count = streak_count + 1;
+                        }else{
+                            streak_count = 1;
+                        }
+                    }
+                    this.account.user.streak_count = streak_count;
+                    this.account.user.last_program_finish_date = current_date_iso;
+
+                    const body = {
+                        user_id: user_id,
+                        streak_count: streak_count,
+                        last_program_finish_date: current_date_iso
+                    }
+                    console.log(body)
+
+                    const requestOptions = {
+                        method: 'POST',
+                        credentials: 'include',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(body)
+                    };
+                    // console.log(fetch(`${config.apiUrl}/users/streak`, requestOptions).then(handleResponse))
+                    fetch(`${config.apiUrl}/users/streak`, requestOptions).then(handleResponse);
                 },
                 listenersWhenPlay() {
                     this.player.addEventListener("timeupdate", () => {
@@ -159,6 +198,23 @@
                     this.setCurrentSong();
                     this.timer = parseInt(this.current.duration)
                 },
+                handleResponse(response) {
+                    return response.text().then(text => {
+                        const data = text && JSON.parse(text);
+                        if (!response.ok) {
+                            if (response.status === 401) {
+                                // auto logout if 401 response returned from api
+                                logout();
+                                location.reload(true);
+                            }
+
+                            const error = (data && data.message) || response.statusText;
+                            return Promise.reject(error);
+                        }
+
+                        return data;
+                    });
+                }
             },
             props: ['exercises'],
         data() {

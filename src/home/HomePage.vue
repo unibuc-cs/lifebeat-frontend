@@ -73,7 +73,7 @@ export default {
     data() {
         return {
             page: 1,
-            perPage: 6,
+            perPage: 4,
             pages: [],
             search: ''
         }
@@ -144,8 +144,8 @@ export default {
     }
 
     .program-img{
-        max-width: 18rem;
-        max-height: 18rem;;
+        width: 18rem;
+        height: 18rem;;
     }
 
     button.page-link {

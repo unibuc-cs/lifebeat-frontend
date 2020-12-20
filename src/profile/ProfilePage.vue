@@ -1,7 +1,34 @@
 <template>
     <div>
         <navbar />
-        <h1>Profile {{account.user.first_name + ' ' + account.user.last_name}}</h1>
+        <h1>My Profile</h1>
+        <div class="mt-5 ml-5">
+            <h2 class="row">
+                <icon class="icon-dumbbell" icon="fire-alt" />
+                {{account.user.streak_count }}
+                <icon class="icon-dumbbell mr-3" icon="fire-alt" />
+                {{ account.user.first_name + ' ' + account.user.last_name}}
+            </h2>
+            <div class="row h5 mt-3" >{{account.user.email}}</div>
+            <div class="row h5 mt-3" >{{account.user.age}} years old</div>
+            <div class="row h5 mt-3">
+                <div v-if="account.user.gender == 'M'">Male</div>
+                <div v-if="account.user.gender == 'F'">Female</div>
+                <div v-if="account.user.gender == 'O'">Other</div>
+            </div>
+            <div class="row h5 mt-3">
+                <div>Height: {{ account.user.height }} cm </div>
+            </div>
+            <div class="row h5 mt-3">
+                <div>Weight: {{ account.user.weight }} kg </div>
+            </div>
+            <div class="row h5 mt-3">
+                <div>Purpose:  </div>
+                <div v-if="account.user.gender == 'L'">Lose weight</div>
+                <div v-if="account.user.gender == 'M'">Muscle increase</div>
+                <div v-if="account.user.gender == 'S'">Stay in shape</div>
+            </div>
+        </div>
     </div>
 </template>
 <script>

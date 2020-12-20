@@ -4,9 +4,9 @@
         <h1>My Profile</h1>
         <div class="mt-5 ml-5">
             <h2 class="row">
-                <icon class="icon-dumbbell" icon="fire-alt" />
-                {{account.user.streak_count }}
-                <icon class="icon-dumbbell mr-3" icon="fire-alt" />
+                <icon class="icon-dumbbell" icon="dumbbell" />
+                <small class="mr-2 ml-2">{{account.user.streak_count }}</small>
+                <icon class="icon-dumbbell mr-3" icon="dumbbell" />
                 {{ account.user.first_name + ' ' + account.user.last_name}}
             </h2>
             <div class="row h5 mt-3" >{{account.user.email}}</div>
@@ -46,5 +46,8 @@
 </script>
 
 <style scoped>
-
+.icon-dumbbell{
+        color: rgb(165, 46, 46);
+        font-size: 2.5rem;
+    }
 </style>

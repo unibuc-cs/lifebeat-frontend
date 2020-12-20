@@ -27,9 +27,9 @@
         </ul>
         <ul class="navbar-nav mr-5">
             <span class="navbar-text">
-                <icon class="icon-dumbbell" icon="fire-alt" />
+                <icon class="icon-dumbbell" icon="dumbbell" />
                 {{account.user.streak_count }}
-                <icon class="icon-dumbbell mr-3" icon="fire-alt" />
+                <icon class="icon-dumbbell mr-3" icon="dumbbell" />
                 {{ account.user.first_name + ' ' + account.user.last_name}}
             </span>
             <li class="nav-item">
@@ -65,7 +65,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
     .nav-lifebeat {
         overflow: hidden;
         position: fixed;
@@ -76,7 +76,7 @@ export default {
     }
 
     .icon-dumbbell{
-        color: red;
-        font-size: 1.6rem;
+        color: rgb(165, 46, 46);
+        font-size: 1.4rem;
     }
 </style>

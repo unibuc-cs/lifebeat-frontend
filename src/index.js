@@ -8,11 +8,11 @@ import App from './app/App';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     // import icons here
-    faFireAlt,
+    faFireAlt, faDumbbell
   } from '@fortawesome/free-solid-svg-icons';
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
  
-  library.add(faFireAlt);
+  library.add(faFireAlt, faDumbbell);
   Vue.component('icon', FontAwesomeIcon);
   Vue.config.productionTip = false;
 

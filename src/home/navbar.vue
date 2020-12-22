@@ -7,17 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/programs">Programs</router-link>
+                <!-- <router-link class="nav-link" to="/programs">My Programs</router-link> -->
+                <router-link class="nav-link" to="/">My Programs</router-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <router-link class="nav-link" to="/calorie_tracker">Calorie Tracker</router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link" to="/leaderboard">Leaderboard</router-link>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <router-link class="nav-link" to="/profile">My Profile</router-link>
             </li>

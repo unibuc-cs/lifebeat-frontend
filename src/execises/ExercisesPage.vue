@@ -6,7 +6,8 @@
                 <section class="player">
                     <div class="row">
                         <div class="mt-5 ml-5 col-md-8">
-                            <img v-bind:src="current.video" alt="Video Exercise">
+                            <img v-bind:src="current.video" alt="Video Exercise" class="video-lifebeat" v-if="exercises.indexOf(current)%2==0">
+                            <img v-bind:src="current.video" alt="Video Exercise" class="video-lifebeat" v-if="exercises.indexOf(current)%2==1">
                         </div>
                         
                     </div>
@@ -253,5 +254,9 @@
     text-align: center;
     margin-left: 6rem;
     font: 32px Arial, sans-serif;
+}
+
+.video-lifebeat{
+    max-height: 400px;
 }
 </style>

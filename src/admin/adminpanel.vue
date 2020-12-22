@@ -5,14 +5,18 @@
             <span v-if="users.error" class="text-danger">ERROR: {{users.error}}</span>
             <ul v-if="users.items">
                 <li v-for="user in users.items" :key="user.id">
-                    <div>{{user.email + ' ' + user.first_name + ' ' + user.last_name }}</div> 
-                    <div>{{ user.gender + ' ' + user.purpose + ' ' + user.height + 'cm' + ' ' + user.weight + 'kg  Age:' + user.age }} </div>
-                    <div class="admin" v-if="user.admin">Admin</div>
-                    <span v-if="account.user.admin">      
-                    <span v-if="user.deleting"><em> - Deleting...</em></span>
+                    <div>{{user.email + ' ' + user.first_name + ' ' + user.last_name }}
+                        <span class="admin" v-if="user.admin">Admin</span>
+                        <span v-if="account.user.admin && !user.admin">      
+                        <span v-if="user.deleting"><em> - Deleting...</em></span>
                         <span v-else-if="user.deleteError" class="text-danger"> - ERROR: {{user.deleteError}}</span>
                         <span v-else> - <a @click="deleteUser(user.id)" class="text-danger">Delete</a></span>
                     </span>
+                    </div> 
+                    <div>Streak: {{ user.streak_count }}</div>
+                    <div>{{ user.gender + ' ' + user.purpose + ' ' + user.height + 'cm' + ' ' + user.weight + 'kg  Age:' + user.age }} </div>
+                    
+                    
                 </li>
             </ul>
     </div>

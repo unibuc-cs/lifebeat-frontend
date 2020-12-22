@@ -7,15 +7,19 @@
                     <img v-bind:src=program.image alt="Picture" class="img-thumbnail prog-img">
                 </div>
                 <div class="col-md-9 card-body d-flex flex-column">
-                    <div class="col">
+                    <div class="row">
                         <h1 class="row display-3">{{ program.name }}</h1>
-                        <p class="h2 text-info">{{ program.description }}</p>
-                        <p class="h6 text-secondary">{{ program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name'] }}</p>
                     </div>
-                    <div class="row mt-auto ml-auto">
-                        <router-link class="nav-link" :to="{name: 'exercises', params: { exercises: exercises } }">
-                            <button type="button" class="btn btn-success btn-lg start-btn">Start Program</button>
-                        </router-link>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row h2 text-info">{{ program.description }}</div>
+                            <div class="row h6 text-secondary">{{ program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name'] }}</div>
+                        </div>
+                        <div class="mt-auto ml-auto">
+                            <router-link class="nav-link" :to="{name: 'exercises', params: { exercises: exercises } }">
+                                <button type="button" class="btn btn-success btn-lg start-btn">Start Program</button>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -13,12 +13,12 @@
                 <!-- <router-link class="nav-link" to="/programs">My Programs</router-link> -->
                 <router-link class="nav-link" to="/">My Programs</router-link>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <router-link class="nav-link" to="/calorie_tracker">Calorie Tracker</router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link" to="/leaderboard">Leaderboard</router-link>
-            </li> -->
+            </li>
             <li class="nav-item">
                 <router-link class="nav-link" to="/profile">My Profile</router-link>
             </li>
@@ -27,6 +27,14 @@
             </li>
         </ul>
         <ul class="navbar-nav mr-5">
+            <span class="navbar-text mr-4">
+                
+                    <span>Purpose:  </span>
+                    <span v-if="account.user.purpose == 'L'" class="font-weight-bold">Lose weight</span>
+                    <span v-if="account.user.purpose == 'M'" class="font-weight-bold">Muscle increase</span>
+                    <span v-if="account.user.purpose == 'S'" class="font-weight-bold">Stay in shape</span>
+                
+            </span>
             <span class="navbar-text">
                 <icon class="icon-dumbbell" icon="dumbbell" />
                 {{account.user.streak_count }}

@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row float-right mr-5">
+            <div class="row float-right mr-5" v-if="!search">
                 <nav aria-label="Page navigation example" v-if="pages.length != 1">
                     <ul class="pagination">
                         <li class="page-item">

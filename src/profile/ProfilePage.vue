@@ -24,9 +24,9 @@
             </div>
             <div class="row h5 mt-3">
                 <div>Purpose:  </div>
-                <div v-if="account.user.gender == 'L'">Lose weight</div>
-                <div v-if="account.user.gender == 'M'">Muscle increase</div>
-                <div v-if="account.user.gender == 'S'">Stay in shape</div>
+                <div v-if="account.user.purpose == 'L'">Lose weight</div>
+                <div v-if="account.user.purpose == 'M'">Muscle increase</div>
+                <div v-if="account.user.purpose == 'S'">Stay in shape</div>
             </div>
         </div>
     </div>

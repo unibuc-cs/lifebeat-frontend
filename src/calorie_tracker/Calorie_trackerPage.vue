@@ -97,10 +97,10 @@
                 var carbs = parseInt(this.newCarbs.trim()) || 0
                 var protein = parseInt(this.newProtein.trim()) || 0
 
-                this.totalCaloriesLeft = this.totalCaloriesLeft - calories
-                this.totalFatLeft = this.totalFatLeft - fat
-                this.totalCarbsLeft = this.totalCarbsLeft - carbs
-                this.totalProteinLeft = this.totalProteinLeft - protein
+                // this.totalCaloriesLeft = this.totalCaloriesLeft - calories
+                // this.totalFatLeft = this.totalFatLeft - fat
+                // this.totalCarbsLeft = this.totalCarbsLeft - carbs
+                // this.totalProteinLeft = this.totalProteinLeft - protein
 
 
                 if (description && calories) {
@@ -125,10 +125,10 @@
         },
         created() {
             if(this.account.user.purpose == 'L'){
-                this.totalCaloriesLeft = 1100
-                this.totalFatLeft = 400
-                this.totalCarbsLeft = 700
-                this.totalProteinLeft = 240
+                this.totalCaloriesLeft_G = 1100
+                this.totalFatLeft_G = 400
+                this.totalCarbsLeft_G = 700
+                this.totalProteinLeft_G = 240
             }else if(this.account.user.purpose == 'M'){
                 this.totalCaloriesLeft = 1300
                 this.totalFatLeft = 400
@@ -152,6 +152,11 @@
                 app.totalFat = parseTotals(app.entries, 'fat')
                 app.totalCarbs = parseTotals(app.entries, 'carbs')
                 app.totalProtein = parseTotals(app.entries, 'protein')
+
+                app.totalCaloriesLeft = app.totalCaloriesLeft_G - parseTotals(app.entries, 'calories')
+                app.totalFatLeft = app.totalFatLeft_G - parseTotals(app.entries, 'fat')
+                app.totalCarbsLeft = app.totalCarbsLeft_G - parseTotals(app.entries, 'carbs')
+                app.totalProteinLeft = app.totalProteinLeft_G - parseTotals(app.entries, 'protein')
             }
 
     function parseTotals(array, element) {

@@ -37,7 +37,7 @@
             </span>
             <span class="navbar-text">
                 <icon class="icon-dumbbell" icon="dumbbell" />
-                {{account.user.streak_count }}
+                {{account.user.streakCount }}
                 <icon class="icon-dumbbell mr-3" icon="dumbbell" />
                 {{ account.user.first_name + ' ' + account.user.last_name}}
             </span>

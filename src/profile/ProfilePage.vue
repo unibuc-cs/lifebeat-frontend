@@ -5,7 +5,7 @@
         <div class="mt-5 ml-5">
             <h2 class="row">
                 <icon class="icon-dumbbell" icon="dumbbell" />
-                <small class="mr-2 ml-2">{{account.user.streak_count }}</small>
+                <small class="mr-2 ml-2">{{account.user.streakCount }}</small>
                 <icon class="icon-dumbbell mr-3" icon="dumbbell" />
                 {{ account.user.first_name + ' ' + account.user.last_name}}
             </h2>

@@ -102,6 +102,11 @@
                 finishedProgram(user_id){
                     console.log(user_id)
 
+                    var points = 0
+                    this.exercises.forEach(element => {
+                        points = points + element.points
+                    });
+
                     var current_date = new Date();
                     // console.log("current_date:", current_date);
                     var current_date_iso = current_date.toISOString();
@@ -121,7 +126,7 @@
 
                     // console.log("curr_2:", curr_2);
 
-                    var streak_count = this.account.user.streak_count;
+                    var streak_count = this.account.user.streakCount;
                     if(last_date < curr_2){
                         if(yesterday < last_date){
                             streak_count = streak_count + 1;
@@ -129,13 +134,14 @@
                             streak_count = 1;
                         }
                     }
-                    this.account.user.streak_count = streak_count;
+                    this.account.user.streakCount = streak_count;
                     this.account.user.last_program_finish_date = current_date_iso;
 
                     const body = {
                         user_id: user_id,
                         streak_count: streak_count,
-                        last_program_finish_date: current_date_iso
+                        last_program_finish_date: current_date_iso,
+                        points: points
                     }
                     console.log(body)
 

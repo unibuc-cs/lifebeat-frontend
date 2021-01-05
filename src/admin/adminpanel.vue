@@ -13,7 +13,7 @@
                         <span v-else> - <a @click="deleteUser(user.id)" class="text-danger">Delete</a></span>
                     </span>
                     </div> 
-                    <div>Streak: {{ user.streak_count }}</div>
+                    <div>Streak: {{ user.streakCount }}</div>
                     <div>{{ user.gender + ' ' + user.purpose + ' ' + user.height + 'cm' + ' ' + user.weight + 'kg  Age:' + user.age }} </div>
                     
                     

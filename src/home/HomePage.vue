@@ -69,7 +69,7 @@ export default {
         
     },
     created () {
-        this.getAllPrograms();
+        this.getAllPrograms(this.account.user.purpose);
     },
     data() {
         return {

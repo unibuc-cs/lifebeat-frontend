@@ -6,10 +6,10 @@ const state = {
 
 
 const actions = {
-    getAll({ commit }) {
+    getAll({ commit }, purpose) {
         commit('getAllRequest');
 
-        programsService.getAll()
+        programsService.getAll(purpose)
             .then(
                 progs => commit('getAllSuccess', progs),
                 error => commit('getAllFailure', error)

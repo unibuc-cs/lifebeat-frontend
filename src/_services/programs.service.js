@@ -5,16 +5,16 @@ export const programsService = {
     getAll,
 };
 
-function getAll() {
+function getAll(purpose) {
     
     // return Promise.resolve(programs)
-
+    console.log(purpose)
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
-    console.log(fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse))
-    return fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse);
+    console.log(fetch(`${config.apiUrl}/programs/all/${purpose}`, requestOptions).then(handleResponse))
+    return fetch(`${config.apiUrl}/programs/all/${purpose}`, requestOptions).then(handleResponse);
 }
 
 

@@ -70,6 +70,7 @@ export default {
     },
     created () {
         this.getAllPrograms(this.account.user.purpose);
+        this.updateUser(this.account.user.id);
     },
     data() {
         return {
@@ -82,6 +83,9 @@ export default {
     methods: {
         ...mapActions('programs', {
             getAllPrograms: 'getAll'
+        }),
+        ...mapActions('account', {
+            updateUser: 'update'
         }),
         setPages() {
                 if(this.programs.error){

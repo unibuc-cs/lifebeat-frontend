@@ -35,6 +35,14 @@
                     <span v-if="account.user.purpose == 'S'" class="font-weight-bold">Stay in shape</span>
                 
             </span>
+            <span class="navbar-text mr-4 level-bar">
+                <div class="font-weight-bold">
+                        Level: {{account.user.level}}
+                        <div class="progress font-weight-normal">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" v-bind:style="'width: '+ procent + '%;'" :aria-valuenow="procent" aria-valuemin="0" aria-valuemax="100">{{procent}}%</div>
+                        </div>
+                    </div>
+            </span>
             <span class="navbar-text">
                 <icon class="icon-dumbbell" icon="dumbbell" />
                 {{account.user.streakCount }}
@@ -71,6 +79,16 @@ export default {
                 account: state => state.account
             })
         },
+    data(){
+        return {
+            procent: 0
+            // (this.account.user.points * 100 / (level * level * 80))
+        }
+    },
+    created(){
+        this.procent = this.account.user.points * 100 / (this.account.user.level * this.account.user.level * 80)
+        this.procent = this.procent.toFixed(2)
+    }
 };
 </script>
 
@@ -87,5 +105,9 @@ export default {
     .icon-dumbbell{
         color: rgb(165, 46, 46);
         font-size: 1.4rem;
+    }
+
+    .level-bar{
+        width: 190px;
     }
 </style>

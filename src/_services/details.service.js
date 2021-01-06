@@ -39,8 +39,8 @@ function getExercises(id){
 
 function handleResponse(response) {
     return response.text().then(text => {
-        console.log('func');
-        console.log(text);
+        // console.log('func');
+        // console.log(text);
         return JSON.parse(text);
         const data = text && JSON.parse(text);
         if (!response.ok) {

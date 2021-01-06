@@ -99,8 +99,12 @@
             })
         },
         methods: {
+
+                ...mapActions('account', {
+                    updateUser: 'update'
+                }),
                 finishedProgram(user_id){
-                    console.log(user_id)
+                    // console.log(user_id)
 
                     var points = 0
                     this.exercises.forEach(element => {
@@ -143,7 +147,7 @@
                         last_program_finish_date: current_date_iso,
                         points: points
                     }
-                    console.log(body)
+                    // console.log(body)
 
                     const requestOptions = {
                         method: 'POST',
@@ -153,6 +157,7 @@
                     };
                     // console.log(fetch(`${config.apiUrl}/users/streak`, requestOptions).then(handleResponse))
                     fetch(`${config.apiUrl}/users/streak`, requestOptions).then(handleResponse);
+                    // updateUser(this.account.user.id);
                 },
                 listenersWhenPlay() {
                     this.player.addEventListener("timeupdate", () => {

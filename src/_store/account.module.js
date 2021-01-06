@@ -44,6 +44,19 @@ const actions = {
                     dispatch('alert/error', error, { root: true });
                 }
             );
+    },
+    update({ commit }, id){
+        userService.getById(id)
+            .then(
+                user => {
+                    commit('loginSuccess', user);
+                    router.push('/');
+                },
+                error => {
+                    commit('loginFailure', error);
+                    dispatch('alert/error', error, { root: true });
+                }
+            );
     }
 };
 

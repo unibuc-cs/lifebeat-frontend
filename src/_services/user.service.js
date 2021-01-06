@@ -44,7 +44,7 @@ function register(user) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-    console.log(JSON.stringify(user))
+    // console.log(JSON.stringify(user))
 
     return fetch(`${config.apiUrl}/users/register`, requestOptions).then(handleResponse);
 }
@@ -54,7 +54,7 @@ function getAll() {
         method: 'GET',
         headers: authHeader()
     };
-    console.log(fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse))
+    // console.log(fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse))
     return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
@@ -62,9 +62,10 @@ function getAll() {
 function getById(id) {
     const requestOptions = {
         method: 'GET',
-        headers: authHeader()
+        // headers: authHeader()
     };
-
+    // console.log('getuserbyid')
+    // console.log(fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse))
     return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
 }
 

@@ -124,21 +124,28 @@
             }
         },
         created() {
+            this.totalCalories_G = 0 
+            if(this.account.user.gender == "M"){
+                this.totalCaloriesLeft_G = 66.47 + 13.75 * this.account.user.weight + 5.003 * this.account.user.height - 6.755 * this.account.user.age
+           }else{
+                this.totalCaloriesLeft_G = 655.1 + 9.563 * this.account.user.weight + 1.85 * this.account.user.height - 4.676 * this.account.user.age
+            }
+
             if(this.account.user.purpose == 'L'){
-                this.totalCaloriesLeft_G = 1100
-                this.totalFatLeft_G = 400
-                this.totalCarbsLeft_G = 700
-                this.totalProteinLeft_G = 240
+                this.totalCaloriesLeft_G = this.totalCaloriesLeft_G  - 250
+                this.totalFatLeft_G = this.totalCaloriesLeft_G * 0.25
+                this.totalCarbsLeft_G = this.totalCaloriesLeft_G * 0.45
+                this.totalProteinLeft_G = this.totalCaloriesLeft_G * 0.30
             }else if(this.account.user.purpose == 'M'){
-                this.totalCaloriesLeft = 1300
-                this.totalFatLeft = 400
-                this.totalCarbsLeft = 800
-                this.totalProteinLeft = 740
+                this.totalCaloriesLeft_G = this.totalCaloriesLeft_G  + 250
+                this.totalFatLeft_G = this.totalCaloriesLeft_G * 0.25
+                this.totalCarbsLeft_G = this.totalCaloriesLeft_G * 0.40
+                this.totalProteinLeft_G = this.totalCaloriesLeft_G * 0.35
             }else if(this.account.user.purpose == 'S'){
-                this.totalCaloriesLeft = 1200
-                this.totalFatLeft = 300
-                this.totalCarbsLeft = 600
-                this.totalProteinLeft = 440
+                this.totalCaloriesLeft_G = this.totalCaloriesLeft_G
+                this.totalFatLeft_G = this.totalCaloriesLeft_G * 0.25
+                this.totalCarbsLeft_G = this.totalCaloriesLeft_G * 0.45
+                this.totalProteinLeft_G = this.totalCaloriesLeft_G * 0.30
             }
 
            calculateTotals(this) 
@@ -148,15 +155,16 @@
     };
 
     function calculateTotals(app) {
+            
                 app.totalCalories = parseTotals(app.entries, 'calories')
                 app.totalFat = parseTotals(app.entries, 'fat')
                 app.totalCarbs = parseTotals(app.entries, 'carbs')
                 app.totalProtein = parseTotals(app.entries, 'protein')
 
-                app.totalCaloriesLeft = app.totalCaloriesLeft_G - parseTotals(app.entries, 'calories')
-                app.totalFatLeft = app.totalFatLeft_G - parseTotals(app.entries, 'fat')
-                app.totalCarbsLeft = app.totalCarbsLeft_G - parseTotals(app.entries, 'carbs')
-                app.totalProteinLeft = app.totalProteinLeft_G - parseTotals(app.entries, 'protein')
+                app.totalCaloriesLeft = Math.floor(app.totalCaloriesLeft_G - app.totalCalories)
+                app.totalFatLeft = Math.floor(app.totalFatLeft_G - app.totalFat)
+                app.totalCarbsLeft = Math.floor(app.totalCarbsLeft_G - app.totalCarbs)
+                app.totalProteinLeft = Math.floor(app.totalProteinLeft_G - app.totalProtein)
             }
 
     function parseTotals(array, element) {

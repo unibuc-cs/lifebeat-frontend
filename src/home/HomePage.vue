@@ -70,7 +70,8 @@ export default {
     },
     created () {
         this.getAllPrograms(this.account.user.purpose);
-        this.updateUser(this.account.user.id);
+        this.updateCurrentUser(this.account.user.id);
+        this.reloadPage();
     },
     data() {
         return {
@@ -85,7 +86,7 @@ export default {
             getAllPrograms: 'getAll'
         }),
         ...mapActions('account', {
-            updateUser: 'update'
+            updateCurrentUser: 'updateCurrentUser'
         }),
         setPages() {
                 if(this.programs.error){
@@ -105,7 +106,22 @@ export default {
                 let to = (page * perPage);
                 // console.log(posts.slice(from, to))
                 return  posts.slice(from, to);
-                }
+                },
+        reloadPage() {
+            // The last "domLoading" Time //
+            var currentDocumentTimestamp =
+            new Date(performance.timing.domLoading).getTime();
+            console.log('refresh')
+            // Current Time //
+            var now = Date.now();
+            // Ten Seconds //
+            var tenSec = 10 * 1000;
+            // Plus Ten Seconds //
+            var plusTenSec = currentDocumentTimestamp + tenSec;
+            if (now > plusTenSec) {
+            location.reload();
+            } else {}
+        }
     },
     watch: {
          posts() {

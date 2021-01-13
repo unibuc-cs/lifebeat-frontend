@@ -45,12 +45,13 @@ const actions = {
                 }
             );
     },
-    update({ commit }, id){
+    updateCurrentUser({ commit }, id){
+        console.log('asdadadasdsadsadasdasdsadasdaasd')
         userService.getById(id)
             .then(
                 user => {
                     commit('loginSuccess', user);
-                    router.push('/');
+                    console.log(user);
                 },
                 error => {
                     commit('loginFailure', error);

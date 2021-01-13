@@ -41,11 +41,12 @@
                             <button class="next btn btn-info btn-lg" @click="next" v-if="exercises.length > 1 && exercises.indexOf(current) < exercises.length - 1" :disabled="timer != 0">
                                 Next
                             </button>
-                            <router-link class="nav-link" to="/" v-else>
+                            <!-- <router-link class="nav-link" to="/" v-else> -->
+                            <!-- <router-link class="nav-link" to="/"> -->
                                 <button class="next btn btn-info btn-lg" @click="finishedProgram(account.user.id)" :disabled="timer != 0">
                                     Finish
                                 </button>
-                            </router-link>
+                            <!-- </router-link> -->
                         </div>
                     </div>
                 </section>
@@ -90,6 +91,7 @@
     import config from 'config';
     import { mapState, mapActions } from 'vuex';
     import navbar from '../home/navbar.vue';
+    import { router } from '../_helpers';
 
     export default {
         components: { navbar },
@@ -101,14 +103,14 @@
         methods: {
 
                 ...mapActions('account', {
-                    updateUser: 'update'
+                    updateCurrentUser: 'updateCurrentUser'
                 }),
                 finishedProgram(user_id){
                     // console.log(user_id)
 
                     var points = 0
                     this.exercises.forEach(element => {
-                        points = points + element.points
+                        points = points + element.points * element.reps + element.points * element.duration
                     });
 
                     var current_date = new Date();
@@ -139,6 +141,8 @@
                         }
                     }
                     this.account.user.streakCount = streak_count;
+                    // this.account.user.points = points;
+                    // this.account.user.level = points % (this.account.user.level * this.account.user.level + 80)
                     this.account.user.last_program_finish_date = current_date_iso;
 
                     const body = {
@@ -147,7 +151,7 @@
                         last_program_finish_date: current_date_iso,
                         points: points
                     }
-                    // console.log(body)
+                    console.log(body)
 
                     const requestOptions = {
                         method: 'POST',
@@ -155,9 +159,13 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(body)
                     };
+
                     // console.log(fetch(`${config.apiUrl}/users/streak`, requestOptions).then(handleResponse))
-                    fetch(`${config.apiUrl}/users/streak`, requestOptions).then(handleResponse);
-                    // updateUser(this.account.user.id);
+                    fetch(`${config.apiUrl}/users/streak`, requestOptions).then(this.handleResponse)
+                    setTimeout(this.updateCurrentUser(this.account.user.id), 2000)
+                    this.updateCurrentUser(this.account.user.id);
+                    setTimeout(router.push('/'), 2000);
+                    // router.push('/');
                 },
                 listenersWhenPlay() {
                     this.player.addEventListener("timeupdate", () => {
@@ -248,6 +256,9 @@
                     this.timer -= 1
                     }
                 }, 1000)
+        },
+        beforeDestroy(){
+            this.updateCurrentUser(this.account.user.id);
         }
     };
 </script>

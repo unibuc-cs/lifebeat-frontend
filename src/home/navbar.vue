@@ -86,7 +86,7 @@ export default {
         }
     },
     created(){
-        this.procent = this.account.user.points * 100 / (this.account.user.level * this.account.user.level * 80)
+        this.procent = this.account.user.points * 100 / ((this.account.user.level + 1 ) * (this.account.user.level + 1 ) * 100)
         this.procent = this.procent.toFixed(2)
     }
 };

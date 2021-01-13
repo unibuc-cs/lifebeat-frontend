@@ -1,7 +1,8 @@
 import { userService } from '../_services';
 
 const state = {
-    all: {}
+    all: {},
+    user: {}
 };
 
 const actions = {
@@ -23,6 +24,12 @@ const actions = {
                 user => commit('deleteSuccess', id),
                 error => commit('deleteFailure', { id, error: error.toString() })
             );
+    },
+    getById({ commit }, id){
+        userService.getById(id).then(
+            user => commit('getByIdSuccess', user),
+            error => commit('getByIdFailure', { id, error: error.toString() })
+        );
     }
 };
 
@@ -34,6 +41,13 @@ const mutations = {
         state.all = { items: users };
     },
     getAllFailure(state, error) {
+        state.all = { error };
+    },
+    getByIdSuccess(state, user) {
+        console.log(user)
+        state.user =  user ;
+    },
+    getByIdFailure(state, users) {
         state.all = { error };
     },
     deleteRequest(state, id) {

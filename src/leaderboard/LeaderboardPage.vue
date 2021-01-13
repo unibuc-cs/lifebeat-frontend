@@ -31,7 +31,11 @@
                         <icon v-else-if="index == 2" class="fa-bronze" icon="crown" />
 
                     </th>
-                    <td>{{ user.first_name + ' ' + user.last_name }}</td>
+                    <router-link :to="'/user-profile/' + user.id" class="text-decoration-none text-dark">
+                        <td>
+                            {{ user.first_name + ' ' + user.last_name }}
+                        </td>
+                    </router-link>
                     <td v-if="filterUsed == 'streak'">{{ user.streakCount }}</td>
                     <td v-else>{{ user.level }}</td>
                     </tr>
@@ -75,7 +79,7 @@
     .fa-bronze{
         color: chocolate;
     }
-    .current-user{
+    .current-usecurrent-user{
         background: #93c3ca;
         font-weight: bold;
         /* color: white; */

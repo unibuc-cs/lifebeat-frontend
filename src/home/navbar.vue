@@ -88,6 +88,13 @@ export default {
     created(){
         this.procent = this.account.user.points * 100 / ((this.account.user.level + 1 ) * (this.account.user.level + 1 ) * 100)
         this.procent = this.procent.toFixed(2)
+
+        this.updateCurrentUser(this.account.user.id);
+    },
+    methods:{
+        ...mapActions('account', {
+            updateCurrentUser: 'updateCurrentUser'
+        }),
     }
 };
 </script>

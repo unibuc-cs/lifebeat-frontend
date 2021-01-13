@@ -7,6 +7,7 @@ import RegisterPage from '../register/RegisterPage'
 import ProgramPage  from "../program/ProgramPage";
 import ProgramsPage from '../programs/ProgramsPage'
 import ProfilePage from '../profile/ProfilePage'
+import ProfileUser from '../profile/ProfileUser'
 import LeaderboardPage from '../leaderboard/LeaderboardPage'
 import Calorie_trackerPage from '../calorie_tracker/Calorie_trackerPage'
 import AdminPage from '../admin/AdminPage'
@@ -20,6 +21,7 @@ export const router = new Router({
     { path: '/login', component: LoginPage },
     { path: '/register', component: RegisterPage },
     { path: '/program/:id', component: ProgramPage, props: true},
+    { path: '/user-profile/:id', component: ProfileUser, props: true},
     { path: '/programs', component: ProgramsPage },
     { path: '/profile', component: ProfilePage },
     { path: '/leaderboard', component: LeaderboardPage },

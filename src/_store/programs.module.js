@@ -1,31 +1,38 @@
 import { programsService } from '../_services';
 
 const state = {
-    all: {}
+    all: {},
+    exercises: {}
 };
 
 
 const actions = {
     getAll({ commit }, purpose) {
-        commit('getAllRequest');
-
         programsService.getAll(purpose)
             .then(
                 progs => commit('getAllSuccess', progs),
                 error => commit('getAllFailure', error)
             );
+    },
+    getAllExercises({ commit }){
+        programsService.getAllExercises().then(
+            exercises => commit('getAllExercisesSuccess', exercises)
+        )
+    },
+    createProgram({ commit }, programDetails){
+        programsService.createProgram(programDetails)
     }
 }
 
 const mutations = {
-    getAllRequest(state) {
-        state.all = { loading: true };
-    },
     getAllSuccess(state, progs) {
         state.all = { items: progs };
     },
     getAllFailure(state, error) {
         state.all = { error: 'error' };
+    },
+    getAllExercisesSuccess(state, exercs){
+        state.exercises = { all: exercs };
     }
 };
 

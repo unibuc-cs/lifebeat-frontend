@@ -10,8 +10,8 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <!-- <router-link class="nav-link" to="/programs">My Programs</router-link> -->
-                <router-link class="nav-link" to="/">My Programs</router-link>
+                <router-link class="nav-link" to="/programs">My Programs</router-link>
+                <!-- <router-link class="nav-link" to="/">My Programs</router-link> -->
             </li>
             <li class="nav-item">
                 <router-link class="nav-link" to="/calorie_tracker">Calorie Tracker</router-link>

@@ -3,6 +3,8 @@ import { authHeader } from '../_helpers';
 
 export const programsService = {
     getAll,
+    getAllExercises,
+    createProgram,
 };
 
 function getAll(purpose) {
@@ -17,6 +19,28 @@ function getAll(purpose) {
     return fetch(`${config.apiUrl}/programs/all/${purpose}`, requestOptions).then(handleResponse);
 }
 
+function getAllExercises(){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/exercises`, requestOptions).then(handleResponse);
+}
+
+function createProgram(programDetails){
+
+    programDetails.program.image = images[Math.floor(Math.random() * images.length)];
+
+    const requestOptions = {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(programDetails)
+    };
+    console.log(programDetails)
+    // console.log(fetch(`${config.apiUrl}/users/streak`, requestOptions).then(handleResponse))
+    // fetch(`${config.apiUrl}/programs/create-with-exercises`, requestOptions).then(this.handleResponse)
+}
 
 function handleResponse(response) {
     return response.text().then(text => {
@@ -303,4 +327,27 @@ const programs = [
             token: null
         }
     },
+]
+
+
+const images = [
+    'https://i.imgur.com/uFxOkvV.jpeg',
+    'https://i.imgur.com/dnd7XNa.jpeg',
+    'https://i.imgur.com/5zlvwHJ.jpeg',
+    'https://i.imgur.com/eHASXO0.jpeg',
+    'https://i.imgur.com/ogJhvOs.jpg',
+    'https://i.imgur.com/xrSbKwd.jpg',
+    'https://i.imgur.com/xXQwnN6.png',
+    'https://i.imgur.com/cKqfIRO.png',
+    'https://i.imgur.com/rMjVON6.png',
+    'https://i.imgur.com/cddjH1l.png',
+    'https://i.imgur.com/qGrPYms.png',
+    'https://i.imgur.com/6DrZ0tH.png',
+    'https://i.imgur.com/Bo6V4tQ.png',
+    'https://i.imgur.com/VR9Cn5B.png',
+    'https://i.imgur.com/LT4tSe1.png',
+    'https://i.imgur.com/IbWRGAx.png',
+    'https://i.imgur.com/lgn09FX.png',
+    'https://i.imgur.com/70P12oq.png',
+    'https://i.imgur.com/sCQFS70.png',
 ]

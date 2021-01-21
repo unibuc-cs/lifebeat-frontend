@@ -79,7 +79,7 @@
     .fa-bronze{
         color: chocolate;
     }
-    .current-usecurrent-user{
+    .current-user{
         background: #93c3ca;
         font-weight: bold;
         /* color: white; */

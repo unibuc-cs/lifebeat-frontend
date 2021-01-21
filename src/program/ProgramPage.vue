@@ -13,7 +13,9 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="row h2 text-info">{{ program.description }}</div>
-                            <div class="row h6 text-secondary">{{ program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name'] }}</div>
+                            <router-link :to="'/user-profile/' + program.createdByUser[0]['id']">
+                                <div class="row h6 text-secondary font-weight-bold">{{ program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name'] }}</div>
+                            </router-link>
                         </div>
                         <div class="mt-auto ml-auto">
                             <router-link class="nav-link" :to="{name: 'exercises', params: { exercises: exercises } }">

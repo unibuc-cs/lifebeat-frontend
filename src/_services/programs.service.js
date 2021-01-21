@@ -39,7 +39,7 @@ function createProgram(programDetails){
     };
     console.log(programDetails)
     // console.log(fetch(`${config.apiUrl}/users/streak`, requestOptions).then(handleResponse))
-    // fetch(`${config.apiUrl}/programs/create-with-exercises`, requestOptions).then(this.handleResponse)
+    fetch(`${config.apiUrl}/programs/create-with-exercises`, requestOptions).then(this.handleResponse)
 }
 
 function handleResponse(response) {

@@ -18,9 +18,9 @@
                             <div class="program text-dark text-decoration-none">
                                 <img v-bind:src=program.image alt="Picture" class="img-thumbnail program-img">
                                 <div>{{program.name}}</div>
-                                <!-- <router-link :to="'/user-profile/' + user.id"> -->
+                                <router-link :to="'/user-profile/' + program.createdByUser[0]['id']" class="text-dark font-weight-bold">
                                     <div>{{program.createdByUser[0]['first_name'] + ' ' + program.createdByUser[0]['last_name']}}</div>
-                                <!-- </router-link> -->
+                                </router-link>
                             </div>
                         </router-link>
                     </div>

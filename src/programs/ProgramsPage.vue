@@ -48,7 +48,9 @@
                             <option value='M'>Muscle increase</option>
                             <option value='S'>Stay in shape</option>
                         </select>
-                        <button type="button" class="btn btn-success float-right mt-1 mb-3" @click="createProgram">Create Program</button>
+                        <router-link class="nav-link" to="/">
+                            <button type="button" class="btn btn-success float-right mt-1 mb-3" @click="createProgram">Create Program</button>
+                        </router-link>
                     </div>
             <div>
                 <table class="table table-hover">

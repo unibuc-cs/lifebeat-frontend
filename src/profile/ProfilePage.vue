@@ -2,40 +2,85 @@
     <div>
         <navbar />
         <h1>My Profile</h1>
-        <div class="mt-5 ml-5">
-            <h2 class="row">
-                <icon class="icon-dumbbell" icon="dumbbell" />
-                <small class="mr-2 ml-2">{{account.user.streakCount }}</small>
-                <icon class="icon-dumbbell mr-3" icon="dumbbell" />
-                {{ account.user.first_name + ' ' + account.user.last_name}}
-            </h2>
-            <div class="row h5 mt-3">{{account.user.email}}</div>
-            <input type="text" v-model="first_name" name="first_name" placeholder="Change your first name"> </input>
-            <input type="text" v-model="last_name" name="last_name" placeholder="Change your last name"> </input>
-            <div class="row h5 mt-3">{{account.user.age}} years old</div>
-            <input type="text" v-model="age" name="age" placeholder="Change your age"> </input>
-            <div class="row h5 mt-3">
-                <div v-if="account.user.gender == 'M'">Male</div>
-                <div v-if="account.user.gender == 'F'">Female</div>
-                <div v-if="account.user.gender == 'O'">Other</div>
+        <div class="mt-5 ml-5 ">
+            <div class="row">
+            <div class="col-6">
+                <h2 class="row ">
+                    <icon class="icon-dumbbell" icon="dumbbell" />
+                    <small class="mr-2 ml-2">{{account.user.streakCount }}</small>
+                    <icon class="icon-dumbbell mr-3" icon="dumbbell" />
+                    {{account.user.email}}
+                </h2>
+                <div class="">
+                    <div class="row h5 mt-3">First name:
+                        <input type="text" class="ml-2" v-model="user.first_name" :placeholder="account.user.first_name" :disabled="!changeFirstName">
+                        <button class="ml-5 btn btn-info" @click="toggleChangeFirstName()">Change</button>
+                    </div>
+                    <div class="row h5 mt-3">Last name: 
+                        <input type="text" class="ml-2" v-model="user.last_name" :placeholder="account.user.last_name" :disabled="!changeLastName">
+                        <button class="ml-5 btn btn-info" @click="toggleChangeLastName()">Change</button>
+                        </div>
+                    <div class="row h5 mt-3">Age:
+                        <input type="number" class="ml-2" v-model="user.age" :placeholder="account.user.age" :disabled="!changeAge"> 
+                        <span class="ml-1"> years old </span>
+                        <button class="ml-5 btn btn-info" @click="toggleChangeAge()">Change</button>
+                        </div>
+                    <div class="row h5 mt-3"> Gender: 
+                        <span v-if="!changeGender" class="ml-2">
+                            <div v-if="account.user.gender == 'M'">Male</div>
+                            <div v-if="account.user.gender == 'F'">Female</div>
+                            <div v-if="account.user.gender == 'O'">Other</div>
+                        </span>
+                        <span v-else>
+                            <select v-model="user.gender" name="gender" id="gender" class="form-control ml-2">
+                                <option value='M'>Male</option>
+                                <option value='F'>Female</option>
+                                <option value='O'>Other</option>
+                            </select>
+                        </span>
+                        <button class="ml-5 btn btn-info" @click="toggleChangeGender()">Change</button>
+                    </div>
+                    <div class="row h5 mt-3"> Height:
+                        <input type="number" class="ml-2" v-model="user.height" :placeholder="account.user.height" :disabled="!changeHeight"> 
+                        <span class="ml-1">   cm </span>
+                        <button class="ml-5 btn btn-info" @click="toggleChangeHeight()">Change</button> 
+                    </div>
+                    <div class="row h5 mt-3">Weight:
+                        <input type="number" class="ml-2" v-model="user.weight" :placeholder="account.user.weight" :disabled="!changeWeight"> 
+                        <span class="ml-1">  kg </span>
+                        <button class="ml-5 btn btn-info" @click="toggleChangeWeight()">Change</button> 
+                    </div>
+                    <div class="row h5 mt-3">
+                        <div>Purpose:  </div>  
+                        <span v-if="!changePurpose" class="ml-2">
+                            <div v-if="account.user.purpose == 'L'">Lose weight</div>
+                            <div v-if="account.user.purpose == 'M'">Muscle increase</div>
+                            <div v-if="account.user.purpose == 'S'">Stay in shape</div>
+                        </span>
+                        <span v-else>
+                            <select v-model="user.purpose" name="purpose" id="purpose" class="form-control ml-2">
+                                <option value='L'>Lose weight</option>
+                                <option value='M'>Muscle increase</option>
+                                <option value='S'>Stay in shape</option>
+                            </select>
+                        </span>
+                        <button class="ml-5 btn btn-info" @click="toggleChangePurpose()">Change</button>
+                    </div>
+
+                    <button class="btn btn-secondary btn-lg mr-5 float-right w-25" @click="submitChanges()">
+                        Submit
+                    </button>
+                </div>
             </div>
-            <div class="row h5 mt-3">
-                <div>Height: {{ account.user.height }} cm </div>
+            <div class="col-5">
+               <h1> Achievements </h1>
+                    <button v-for="ach in account.user.achievements" :key="ach.level_needed" class="snip1582 w-100">{{ach.name}}</button>
             </div>
-            <input type="text" v-model="height" name="height" placeholder="Change your height"> </input>
-            <div class="row h5 mt-3">
-                <div>Weight: {{ account.user.weight }} kg </div>
             </div>
-            <input type="text" v-model="weight" name="weight" placeholder="Change your weight"> </input>
-            <div class="row h5 mt-3">
-                <div>Purpose:  </div>   
-                <div v-if="account.user.purpose == 'L'">Lose weight</div>
-                <div v-if="account.user.purpose == 'M'">Muscle increase</div>
-                <div v-if="account.user.purpose == 'S'">Stay in shape</div>
-            </div>
-            <input type="text" v-model="purpose" name="purpose" placeholder="Change your purpose"> </input>
         </div>
-        <button class="btn btn-primary" >Submit</button>
+        <!-- <div class="w-25 float-right">
+                    <button v-for="ach in account.user.achievements" :key="ach.level_needed" class="snip1582">{{ach.name}}</button>
+            </div> -->
     </div>
 </template>
 <script>
@@ -49,6 +94,63 @@
                 account: state => state.account
             })
         },
+        data(){
+            return {
+                user: {
+                    id: '',
+                    email: '',
+                    age: '',
+                    first_name: '',
+                    last_name: '',
+                    gender: '',
+                    height: '',
+                    weight: '',
+                    purpose: ''
+                },
+                changeFirstName: false,
+                changeLastName: false,
+                changeAge: false,
+                changeGender: false,
+                changeHeight: false,
+                changeWeight: false,
+                changePurpose: false
+            }
+        },
+        methods:{
+            ...mapActions('account', {
+            updateUser: 'update'
+            }),
+            submitChanges(){
+                for (const [key, value] of Object.entries(this.user)) {
+                    if(!this.user[key]){
+                        this.user[key] = this.account.user[key];
+                    }
+                }
+
+                this.updateUser(this.user);
+            },
+            toggleChangeFirstName(){
+                this.changeFirstName = !this.changeFirstName;
+            },
+            toggleChangeLastName(){
+                this.changeLastName = !this.changeLastName;
+            },
+            toggleChangeAge(){
+                this.changeAge = !this.changeAge;
+            },
+            toggleChangeGender(){
+                this.changeGender = !this.changeGender;
+            },
+            toggleChangeHeight(){
+                this.changeHeight = !this.changeHeight;
+            },
+            toggleChangeWeight(){
+                this.changeWeight = !this.changeWeight;
+            },
+            toggleChangePurpose(){
+                this.changePurpose = !this.changePurpose;
+            }
+        }
     };
 </script>
 
@@ -57,4 +159,62 @@
         color: rgb(165, 46, 46);
         font-size: 2.5rem;
     }
+
+.snip1582 {
+    background-color: #c47135;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 1em;
+  font-size: 22px;
+  line-height: 1em;
+  margin: 15px 40px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.snip1582:before,
+.snip1582:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.snip1582:before {
+  border-color: #c47135;
+  border-top-width: 2px;
+  left: 0px;
+  top: -5px;
+}
+
+.snip1582:after {
+  border-bottom-width: 2px;
+  border-color: #c47135;
+  bottom: -5px;
+  right: 0px;
+}
+
+.snip1582:hover,
+.snip1582.hover {
+  background-color: #c47135;
+}
+
+.snip1582:hover:before,
+.snip1582.hover:before,
+.snip1582:hover:after,
+.snip1582.hover:after {
+  height: 100%;
+  width: 100%;
+}
 </style>

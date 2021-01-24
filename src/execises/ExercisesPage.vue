@@ -41,12 +41,12 @@
                             <button class="next btn btn-info btn-lg" @click="next" v-if="exercises.length > 1 && exercises.indexOf(current) < exercises.length - 1" :disabled="timer != 0">
                                 Next
                             </button>
-                            <!-- <router-link class="nav-link" to="/" v-else> -->
+                            <router-link class="nav-link" to="/" v-else>
                             <!-- <router-link class="nav-link" to="/"> -->
                                 <button class="next btn btn-info btn-lg" @click="finishedProgram(account.user.id)" :disabled="timer != 0">
                                     Finish
                                 </button>
-                            <!-- </router-link> -->
+                            </router-link>
                         </div>
                     </div>
                 </section>

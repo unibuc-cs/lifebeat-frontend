@@ -3,9 +3,14 @@
         <navbar/>
         <div class="row mt-3 ml-2">
             <h1 class="">Hi {{account.user.first_name}}!</h1>
-            <form class="float-right w-75 ml-5">
+            <form class="float-right w-50 ml-5 mr-5">
                 <input class="form-control form-control-lg" type="text" v-model="search" placeholder="Search program title.." aria-label="Search">
             </form>
+            <select @change="filterPrograms($event)" class="form-control form-control-lg w-25 ml-5">
+                <option value="B" class="acc">LifeBeat + Users Programs</option>
+                <option value="L">LifeBeat Programs</option>
+                <option value="U">Users Programs</option>
+            </select>
         </div>
         <div class="container-fluid  text-dark wrapper-d">
             <div class="row">
@@ -85,7 +90,8 @@ export default {
     },
     methods: {
         ...mapActions('programs', {
-            getAllPrograms: 'getAll'
+            getAllPrograms: 'getAll',
+            filterPrograms: 'filterPrograms'
         }),
         ...mapActions('account', {
             updateCurrentUser: 'updateCurrentUser'

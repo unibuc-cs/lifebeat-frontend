@@ -216,7 +216,11 @@
                         this.index = 0;
                     }
                     this.setCurrentSong();
-                    this.timer = parseInt(this.current.duration)
+                    if(this.current.duration){
+                        this.timer = parseInt(this.current.duration)
+                    }else{
+                       this.timer = 0; 
+                    }
                 },
                 handleResponse(response) {
                     return response.text().then(text => {

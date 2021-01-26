@@ -17,7 +17,6 @@
                 <div class="col-12 programs">
                     <em v-if="programs.loading">Loading programs...</em>
                     <img v-show="programs.loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==">
-                    <!-- <div class="float-left mx-auto"  v-for="program in displayedPosts" :key="program.program_id" v-if="program.purpose == account.user.purpose"> -->
                     <div class="float-left mx-auto"  v-for="program in displayedPosts" :key="program.program_id">
                         <router-link class="nav-link" :to="'/program/' + program.program_id">
                             <div class="program text-dark text-decoration-none">
@@ -31,7 +30,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row float-right mr-5" v-if="!search">
+            <!-- <div class="row float-right mr-5" v-if="!search"> -->
+            <div class="row float-right mr-5">
                 <nav aria-label="Page navigation example" v-if="pages.length != 1">
                     <ul class="pagination">
                         <li class="page-item">
@@ -68,21 +68,18 @@ export default {
             })
         },
         displayedPosts() {
-            if(this.pages.length == 0){
-                this.setPages();
-            }
-            return this.paginate(this.filteredList);
+            // if(this.pages.length == 0){
+            //     this.setPages(this.programs.items);
+            // }
+        
+            const programs = this.filteredList;
+            this.setPages(programs);
+            return this.paginate(programs);
         },
         
     },
     created () {
-        // console.log('purpose:' + this.account.user.purpose);
-        // console.log('before update');
-        // console.log(this.account.user);
         this.updateCurrentUser(this.account.user.id);
-        // console.log('after update');
-        // console.log(this.account.user);
-        // console.log('get programs');
         this.getAllPrograms(this.account.user.purpose);
         // this.reloadPage();
     },
@@ -91,7 +88,7 @@ export default {
             page: 1,
             perPage: 4,
             pages: [],
-            search: ''
+            search: '',
         }
     },
     methods: {
@@ -102,13 +99,14 @@ export default {
         ...mapActions('account', {
             updateCurrentUser: 'updateCurrentUser'
         }),
-        setPages() {
+        setPages(programs) {
                 if(this.programs.error){
                     window.location.href = '/login';
                     return;
                 }
-
-                let numberOfPages = Math.ceil(this.programs.items.length / this.perPage);
+                this.pages = []
+                // console.log(programs)
+                let numberOfPages = Math.ceil(programs.length / this.perPage);
                 for (let index = 1; index <= numberOfPages; index++) {
                     this.pages.push(index);
                 }

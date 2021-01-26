@@ -141,8 +141,18 @@
                         }
                     }
                     this.account.user.streakCount = streak_count;
-                    // this.account.user.points = points;
+
+                    this.account.user.points += points;
                     // this.account.user.level = points % (this.account.user.level * this.account.user.level + 80)
+
+                    var target = (this.account.user.level + 1) * (this.account.user.level + 1) * 100
+                    if(this.account.user.points >= target){
+                        var auxPoint = this.account.user.points - target;
+                        var level_nou = Math.round(Math.sqrt(this.account.user.points / 100));
+                        this.account.user.points = auxPoint;
+                        this.account.user.level = level_nou;
+                    }
+
                     this.account.user.last_program_finish_date = current_date_iso;
 
                     const body = {

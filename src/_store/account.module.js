@@ -46,11 +46,11 @@ const actions = {
             );
     },
     updateCurrentUser({ commit }, id){
-        console.log('asdadadasdsadsadasdasdsadasdaasd')
         userService.getById(id)
             .then(
                 user => {
                     commit('loginSuccess', user);
+                    console.log('updated user:');
                     console.log(user);
                 },
                 error => {

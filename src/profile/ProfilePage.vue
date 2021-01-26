@@ -66,10 +66,11 @@
                         </span>
                         <button class="ml-5 btn btn-info" @click="toggleChangePurpose()">Change</button>
                     </div>
-
-                    <button class="btn btn-secondary btn-lg mr-5 float-right w-25" @click="submitChanges()">
-                        Submit
-                    </button>
+                    <router-link to="/">
+                        <button class="btn btn-secondary btn-lg mr-5 float-right w-25" @click="submitChanges()">
+                            Submit
+                        </button>
+                    </router-link>
                 </div>
             </div>
             <div class="col-5">
@@ -126,8 +127,9 @@
                         this.user[key] = this.account.user[key];
                     }
                 }
-
+                this.account.user.purpose = this.user.purpose;
                 this.updateUser(this.user);
+                
             },
             toggleChangeFirstName(){
                 this.changeFirstName = !this.changeFirstName;

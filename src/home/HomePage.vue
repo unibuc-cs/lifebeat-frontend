@@ -76,9 +76,15 @@ export default {
         
     },
     created () {
-        this.getAllPrograms(this.account.user.purpose);
+        // console.log('purpose:' + this.account.user.purpose);
+        // console.log('before update');
+        // console.log(this.account.user);
         this.updateCurrentUser(this.account.user.id);
-        this.reloadPage();
+        // console.log('after update');
+        // console.log(this.account.user);
+        // console.log('get programs');
+        this.getAllPrograms(this.account.user.purpose);
+        // this.reloadPage();
     },
     data() {
         return {

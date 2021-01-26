@@ -74,8 +74,36 @@
                 </div>
             </div>
             <div class="col-5">
-               <h1> Achievements </h1>
+               <h1 class="row"> Achievements </h1>
                     <button v-for="ach in account.user.achievements" :key="ach.level_needed" class="snip1582 w-100">{{ach.name}}</button>
+                <h1 class="row mt-3"> Your programs </h1>
+                <div class="row ml-5 mt-5 programs-table table-responsive">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Program</th>
+                            <th scope="col">Purpose</th>
+                            <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(prog, index) in progs" :key="prog.program_id">
+                                <th scope="row" >{{ index + 1 }}</th>
+                                <router-link :to="'/program/' + prog.program_id">
+                                    <td>{{ prog.name }}</td>
+                                </router-link>
+                                <td v-if="prog.purpose == 'M'">Muscle Increase</td>
+                                <td v-if="prog.purpose == 'L'">Lose weight</td>
+                                <td v-if="prog.purpose == 'S'">Stay in shape</td>
+                                <td>
+                                    <input type="submit" class="btn btn-danger" @click="deletePrograms(prog.program_id)" value="Delete">
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                        </table>
+                </div>
             </div>
             </div>
         </div>
@@ -92,7 +120,8 @@
         components: { navbar },
         computed: {
             ...mapState({
-                account: state => state.account
+                account: state => state.account,
+                progs: state => state.programs.byUser.all
             })
         },
         data(){
@@ -117,9 +146,16 @@
                 changePurpose: false
             }
         },
+        created () {
+            this.getPrograms(this.account.user.id);
+        },
         methods:{
             ...mapActions('account', {
             updateUser: 'update'
+            }),
+            ...mapActions('programs', {
+                getPrograms: 'getProgramsCreatedByUser',
+                deleteProgram: 'deleteProgramById',
             }),
             submitChanges(){
                 for (const [key, value] of Object.entries(this.user)) {
@@ -130,6 +166,16 @@
                 this.account.user.purpose = this.user.purpose;
                 this.updateUser(this.user);
                 
+            },
+            deletePrograms(program_id){
+                // console.log(program_id);
+                // console.log( this.account.user.id);
+                const details = {
+                    'program_id': program_id,
+                    'user_id': this.account.user.id
+                }
+                // console.log(details)
+                this.deleteProgram(details);
             },
             toggleChangeFirstName(){
                 this.changeFirstName = !this.changeFirstName;
@@ -157,6 +203,10 @@
 </script>
 
 <style scoped>
+.programs-table{
+    max-height: 400px;
+}
+
 .icon-dumbbell{
         color: rgb(165, 46, 46);
         font-size: 2.5rem;

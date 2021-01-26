@@ -2,7 +2,8 @@ import { programsService } from '../_services';
 
 const state = {
     all: {},
-    exercises: {}
+    exercises: {},
+    byUser: {}
 };
 
 
@@ -21,6 +22,11 @@ const actions = {
     },
     createProgram({ commit }, programDetails){
         programsService.createProgram(programDetails)
+    },
+    getProgramsCreatedByUser({ commit }, id){
+        programsService.getAllCreatedByUser(id).then(
+            progs => commit('getAllByUserSuccess', progs)
+        );
     },
     filterPrograms({ commit }, e){
         const purpose = state.all.items[0]['purpose'];
@@ -42,6 +48,20 @@ const actions = {
             programsService.getAll(purpose)
             .then(
                 progs => commit('getAllSuccessUser', progs),
+                error => commit('getAllFailure', error)
+            );
+        }
+    },
+    deleteProgramById({commit}, details){
+        programsService.deleteProgram(details.program_id);
+        if(details.user_id != 'admin'){
+            programsService.getAllCreatedByUser(details.user_id).then(
+                progs => commit('getAllByUserSuccess', progs)
+            );
+        }else{
+            programsService.getAll('admin')
+            .then(
+                progs => commit('getAllSuccess', progs),
                 error => commit('getAllFailure', error)
             );
         }
@@ -67,6 +87,9 @@ const mutations = {
     },
     getAllExercisesSuccess(state, exercs){
         state.exercises = { all: exercs };
+    },
+    getAllByUserSuccess(state, progs){
+        state.byUser = { all: progs }
     }
 };
 

@@ -5,18 +5,37 @@ export const programsService = {
     getAll,
     getAllExercises,
     createProgram,
+    getAllCreatedByUser,
+    deleteProgram
 };
 
 function getAll(purpose) {
-    
-    // return Promise.resolve(programs)
-    // console.log(purpose)
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
-    // console.log(fetch(`${config.apiUrl}/programs/all/${purpose}`, requestOptions).then(handleResponse))
-    return fetch(`${config.apiUrl}/programs/all/${purpose}`, requestOptions).then(handleResponse);
+    if(purpose != 'admin'){
+        return fetch(`${config.apiUrl}/programs/all/${purpose}`, requestOptions).then(handleResponse); 
+    }else{
+        return fetch(`${config.apiUrl}/programs`, requestOptions).then(handleResponse);
+    }
+}
+
+function getAllCreatedByUser(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/programs/createdbyuser/${id}`, requestOptions).then(handleResponse);
+}
+
+function deleteProgram(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    console.log('delete program - ' + id);
+    // return fetch(`${config.apiUrl}/programs/all/${purpose}`, requestOptions).then(handleResponse);
 }
 
 function getAllExercises(){

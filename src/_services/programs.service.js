@@ -31,11 +31,11 @@ function getAllCreatedByUser(id) {
 
 function deleteProgram(id) {
     const requestOptions = {
-        method: 'GET',
+        method: 'DELETE',
         headers: authHeader()
     };
     console.log('delete program - ' + id);
-    // return fetch(`${config.apiUrl}/programs/all/${purpose}`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/programs/${id}`, requestOptions).then(handleResponse);
 }
 
 function getAllExercises(){

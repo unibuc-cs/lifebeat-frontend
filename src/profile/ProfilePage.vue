@@ -13,17 +13,14 @@
                 </h2>
                 <div class="">
                     <div class="row h5 mt-3">First name:
-                        <input type="text" class="ml-2" v-model="user.first_name" :placeholder="account.user.first_name" :disabled="!changeFirstName">
-                        <button class="ml-5 btn btn-info" @click="toggleChangeFirstName()">Change</button>
+                        <input type="text" class="ml-2" v-model="user.first_name" :placeholder="account.user.first_name">
                     </div>
                     <div class="row h5 mt-3">Last name: 
-                        <input type="text" class="ml-2" v-model="user.last_name" :placeholder="account.user.last_name" :disabled="!changeLastName">
-                        <button class="ml-5 btn btn-info" @click="toggleChangeLastName()">Change</button>
+                        <input type="text" class="ml-2" v-model="user.last_name" :placeholder="account.user.last_name">
                         </div>
                     <div class="row h5 mt-3">Age:
-                        <input type="number" class="ml-2" v-model="user.age" :placeholder="account.user.age" :disabled="!changeAge"> 
+                        <input type="number" class="ml-2" v-model="user.age" :placeholder="account.user.age"> 
                         <span class="ml-1"> years old </span>
-                        <button class="ml-5 btn btn-info" @click="toggleChangeAge()">Change</button>
                         </div>
                     <div class="row h5 mt-3"> Gender: 
                         <span v-if="!changeGender" class="ml-2">
@@ -35,20 +32,18 @@
                             <select v-model="user.gender" name="gender" id="gender" class="form-control ml-2">
                                 <option value='M'>Male</option>
                                 <option value='F'>Female</option>
-                                <option value='O'>Other</option>
+                                <option selected value='O'>Other</option>
                             </select>
                         </span>
                         <button class="ml-5 btn btn-info" @click="toggleChangeGender()">Change</button>
                     </div>
                     <div class="row h5 mt-3"> Height:
-                        <input type="number" class="ml-2" v-model="user.height" :placeholder="account.user.height" :disabled="!changeHeight"> 
+                        <input type="number" class="ml-2" v-model="user.height" :placeholder="account.user.height"> 
                         <span class="ml-1">   cm </span>
-                        <button class="ml-5 btn btn-info" @click="toggleChangeHeight()">Change</button> 
                     </div>
                     <div class="row h5 mt-3">Weight:
-                        <input type="number" class="ml-2" v-model="user.weight" :placeholder="account.user.weight" :disabled="!changeWeight"> 
+                        <input type="number" class="ml-2" v-model="user.weight" :placeholder="account.user.weight"> 
                         <span class="ml-1">  kg </span>
-                        <button class="ml-5 btn btn-info" @click="toggleChangeWeight()">Change</button> 
                     </div>
                     <div class="row h5 mt-3">
                         <div>Purpose:  </div>  

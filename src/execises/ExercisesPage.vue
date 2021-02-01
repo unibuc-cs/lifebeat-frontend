@@ -226,11 +226,14 @@
                         this.index = 0;
                     }
                     this.setCurrentSong();
+                    console.log(this.current.duration)
                     if(this.current.duration){
                         this.timer = parseInt(this.current.duration)
+                        console.log(this.current.duration)
                     }else{
                        this.timer = 0; 
                     }
+                    
                 },
                 handleResponse(response) {
                     return response.text().then(text => {
@@ -259,7 +262,7 @@
                isPlaying: false,
                currentlyTimer: "00:00",
                player: new Audio(),
-               timer: parseInt(this.exercises[0].duration)
+               timer: parseInt(this.exercises[0].duration) || 0
            }
         },
         mounted() {

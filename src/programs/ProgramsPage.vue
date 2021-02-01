@@ -42,7 +42,7 @@
                         <span class="input-group-text">Program description</span>
                             <textarea class="form-control" aria-label="With textarea" v-model="description"></textarea>
 
-                        <label for="purpose">Why do you want to use the app?</label>
+                        <label for="purpose">What is the purpose of this program?</label>
                         <select v-model="purpose" class="form-control">
                             <option value='L'>Lose weight</option>
                             <option value='M'>Muscle increase</option>
